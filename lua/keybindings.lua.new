@@ -1,0 +1,64 @@
+vim.g.mapleader = " "
+
+local keymap = vim.api.nvim_set_keymap
+
+function get_lines()
+      info = vim.api.nvim_input('g<C-g>')
+      local index = 1
+      dict = {}
+      for sub_string in string.gmatch(info, "%S+") do
+            dict[index] = sub_string
+            index = index + 1
+      end
+
+      return tonumber(dict[2])
+end
+
+function move_lines(direction)
+      if (direction == 'up') then
+            vim.api.nvim_input('dkP')
+      elseif (direction == 'down') then
+            vim.api.nvim_input('dp')
+            --vim.api.nvim_input('V3j')
+            lines = get_lines()
+            s = string.format("V%dj", lines)
+            vim.api.nvim_input(s)
+      end
+end
+
+-- Move to end and beginning of line like in bash
+keymap('n', '<C-e>', '$', {})
+keymap('n', '<C-a>', '0', {})
+
+-- Move line up and down in normal mode using Alt + j/k
+--keymap('n', '<A-k>', ':m .-2<CR>==', {silent=true})
+--keymap('n', '<A-j>', ':m .+1<CR>==', {silent=true})
+
+-- Move a selection of lines in visual mode using Alt + j/k
+keymap('v', '<A-k>', "<cmd>lua move_lines('up')<CR>", {silent=true})
+keymap('v', '<A-j>', "<cmd>lua move_lines('down')<CR>", {silent=true})
+
+-- Quickly insert new line
+keymap('n', '<Leader>o', 'o<Esc>k', {})
+keymap('n', '<Leader>O', 'O<Esc>j', {})
+
+-- Better split navigation
+keymap('n', '<C-j>', '<C-w><C-j>', {noremap=true})
+keymap('n', '<C-k>', '<C-w><C-k>', {noremap=true})
+keymap('n', '<C-h>', '<C-w><C-h>', {noremap=true})
+keymap('n', '<C-l>', '<C-w><C-l>', {noremap=true})
+
+-- Navigation of bufferline
+keymap('n', '<S-l>', ':BufferLineCycleNext<CR>', {noremap=true, silent=true})
+keymap('n', '<S-h>', ':BufferLineCyclePrev<CR>', {noremap=true, silent=true})
+
+-- Close current buffer WITHOUT SAVING
+keymap('n', '<C-w>', ':bd<CR>', {})
+
+-- Pick buffer to navigate to
+keymap('n', 'f', ':BufferLinePick<CR>', {})
+
+-- Save all open buffers
+keymap('n', '<C-s>', ':wa<CR>', {})
+keymap('i', '<C-s>', ':wa<CR>', {})
+
