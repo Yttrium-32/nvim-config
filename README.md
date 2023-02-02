@@ -11,5 +11,7 @@
 - Windows(Using git-bash):
 `git clone https://gitlab.com/Yttrium_32/nvim-config.git ~/.config/nvim`
 
+Then in nvim run `:PackerInstall` to install all plugins and then relaunch nvim.
+
 
 
