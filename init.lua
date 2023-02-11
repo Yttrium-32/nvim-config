@@ -1,5 +1,12 @@
--- config file for nvim in lua!
+local function open_nvim_tree()
 
+  -- always open nvim-tree on startup
+  require("nvim-tree.api").tree.open()
+  -- Move out of nvim tree
+  vim.api.nvim_input('<C-l>')
+  
+end
+vim.api.nvim_create_autocmd({ "VimEnter" }, { callback = open_nvim_tree })
 -- package manager
 require('plugins')
 
@@ -52,7 +59,6 @@ indent = {
 -- Setup NvimTree
 require("nvim-tree").setup {
   remove_keymaps = {'f'},
-  open_on_setup = true,
   renderer = {
     indent_markers = {
       enable = true
@@ -65,3 +71,5 @@ require("bufferline").setup()
 
 -- Setup Lua line
 require('lualine').setup()
+
+-- open nvim-tree
