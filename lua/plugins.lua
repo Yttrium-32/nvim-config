@@ -32,7 +32,7 @@ require('packer').startup(function()
 	use 'lukas-reineke/indent-blankline.nvim'
 
 	-- Nvim Web devicons
-	use 'kyazdani42/nvim-web-devicons'
+	use 'olimorris/onedarkpro.nvim'
 
 	-- Status line
 	use {

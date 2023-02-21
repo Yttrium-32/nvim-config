@@ -6,7 +6,7 @@ local function open_nvim_tree()
   vim.api.nvim_input('<C-l>')
   
 end
-vim.api.nvim_create_autocmd({ "VimEnter" }, { callback = open_nvim_tree })
+
 -- package manager
 require('plugins')
 
@@ -72,4 +72,5 @@ require("bufferline").setup()
 -- Setup Lua line
 require('lualine').setup()
 
--- open nvim-tree
+-- Open NvimTree on startup
+vim.api.nvim_create_autocmd({ "VimEnter" }, { callback = open_nvim_tree })
