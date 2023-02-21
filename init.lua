@@ -4,7 +4,7 @@ local function open_nvim_tree()
   require("nvim-tree.api").tree.open()
   -- Move out of nvim tree
   vim.api.nvim_input('<C-l>')
-  
+
 end
 
 -- package manager
@@ -23,7 +23,7 @@ if vim.g.neovide then
 end
 
 -- Change color scheme to onedark (might wanna make my own colorscheme soon)
-vim.cmd('colorscheme onedark')
+vim.cmd('colorscheme onedark_dark')
 
 vim.bo.synmaxcol = 300 -- set maximum amount of colums for synatax higlighting
 
