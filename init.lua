@@ -1,9 +1,15 @@
-local function open_nvim_tree()
+local function open_nvim_tree(data)
+  ---- if file is real, open NvimTree but don't focus
+  --if vim.fn.filereadable(data.file) == 1 then
+    --require("nvim-tree.api").tree.toggle({ focus = false, find_file = true })
+    --return
+  --end
 
-  -- always open nvim-tree on startup
-  require("nvim-tree.api").tree.open()
-  -- Move out of nvim tree
-  vim.api.nvim_input('<C-l>')
+  -- if file is [No Name] open NvimTree and focus
+  if data.file == "" and vim.bo[data.buf].buftype == "" then
+    require("nvim-tree.api").tree.toggle({ focus = true, find_file = true })
+    return
+  end
 
 end
 
@@ -16,6 +22,17 @@ require('keybindings')
 -- Import coc config file
 require('coc-config')
 
+-- Setup NvimTree
+require("nvim-tree").setup {
+  remove_keymaps = {'f'},
+  renderer = {
+    indent_markers = {
+      enable = true
+    }
+  }
+}
+
+-- setup for lualine
 
 -- neovide config
 if vim.g.neovide then
@@ -23,8 +40,8 @@ if vim.g.neovide then
 end
 
 -- Change color scheme to onedark (might wanna make my own colorscheme soon)
-vim.cmd('colorscheme onedark_dark')
 
+vim.cmd('colorscheme onedark')
 vim.bo.synmaxcol = 300 -- set maximum amount of colums for synatax higlighting
 
 vim.opt.scrolloff = 7
@@ -56,21 +73,17 @@ indent = {
   }
 }
 
--- Setup NvimTree
-require("nvim-tree").setup {
-  remove_keymaps = {'f'},
-  renderer = {
-    indent_markers = {
-      enable = true
-    }
-  }
-}
 
 -- Setup Buffer line
 require("bufferline").setup()
 
 -- Setup Lua line
-require('lualine').setup()
+require('lualine').setup {
+  options = {
+    icons_enabled = true
+  }
+}
 
 -- Open NvimTree on startup
 vim.api.nvim_create_autocmd({ "VimEnter" }, { callback = open_nvim_tree })
+

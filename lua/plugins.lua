@@ -32,6 +32,9 @@ require('packer').startup(function()
 	use 'lukas-reineke/indent-blankline.nvim'
 
 	-- Nvim Web devicons
+	use 'kyazdani42/nvim-web-devicons'
+
+	-- One dark theme
 	use 'olimorris/onedarkpro.nvim'
 
 	-- Status line
@@ -43,7 +46,7 @@ require('packer').startup(function()
 	-- Buffer line
 	use {
 		'akinsho/bufferline.nvim', 
-		tag = "v2.*", 
+		tag = "*", 
 		requires = 'kyazdani42/nvim-web-devicons'
 	}
 
