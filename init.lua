@@ -1,11 +1,7 @@
 local function open_nvim_tree(data)
-  ---- if file is real, open NvimTree but don't focus
-  --if vim.fn.filereadable(data.file) == 1 then
-    --require("nvim-tree.api").tree.toggle({ focus = false, find_file = true })
-    --return
-  --end
 
   -- if file is [No Name] open NvimTree and focus
+  -- Only open nvim-tree if no file is selected
   if data.file == "" and vim.bo[data.buf].buftype == "" then
     require("nvim-tree.api").tree.toggle({ focus = true, find_file = true })
     return
