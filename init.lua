@@ -28,7 +28,6 @@ require("nvim-tree").setup {
   }
 }
 
--- setup for lualine
 
 -- neovide config
 if vim.g.neovide then

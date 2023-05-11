@@ -1,7 +1,7 @@
 vim.g.mapleader = " "
 local keymap = vim.api.nvim_set_keymap
 
-function setup_make_file ()
+local function setup_make_file ()
   print("hello")
 end
 
@@ -45,5 +45,23 @@ keymap('i', '<C-s>', ':wa<CR>', {})
 keymap('n', '<F9>', '<cmd>lua build_and_run<CR>', {})
 keymap('n', '<F12>', '<cmd>lua setup_make_file<CR>', {})
 
+--" Use <C-l> for trigger snippet expand.
+keymap('i', '<C-l>', '<Plug>(coc-snippet-expand)', {})
 
+-- Use <C-j> for select text for visual placeholder of snippet.
+keymap('v', '<C-j>', '<Plug>(coc-snippet-select)', {})
+
+-- Use <C-j> for jump to next placeholder, it's default of coc.nvim
+vim.g.coc_snippet_next = '<c-j>'
+
+-- Use <C-k> for jump to previous placeholder, it's default of coc.nvim
+vim.g.coc_snippet_prev = '<c-k>'
+
+-- Use <C-j> for both expand and jump (make expand higher priority.)
+--imap <C-j> <Plug>(coc-snippets-expand-jump)
+keymap('i', '<C-j>', '<Plug>(coc-snippet-expand-jump)', {})
+
+-- Use <leader>x for convert visual selected code to snippet
+--xmap <leader>x  <Plug>(coc-convert-snippet)
+keymap('x', '<Leader>x', '<Plug>(coc-convert-snippet)', {})
 

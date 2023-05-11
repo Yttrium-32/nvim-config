@@ -59,5 +59,8 @@ require('packer').startup(function()
 		}
 	}
 
+	-- code snippets
+	use 'honza/vim-snippets'
+
 end)
 
