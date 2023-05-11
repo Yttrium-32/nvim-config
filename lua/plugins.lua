@@ -62,5 +62,8 @@ require('packer').startup(function()
 	-- code snippets
 	use 'honza/vim-snippets'
 
+	-- Color highlighter
+	use 'norcalli/nvim-colorizer.lua'
+
 end)
 

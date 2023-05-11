@@ -72,6 +72,9 @@ indent = {
 -- Setup Buffer line
 require("bufferline").setup()
 
+-- Setup nvim-colorizer
+require("colorizer").setup()
+
 -- Setup Lua line
 require('lualine').setup {
   options = {
