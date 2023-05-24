@@ -9,7 +9,7 @@ local function build_and_run ()
   print("hello")
 end
 
-keymap('n', '<F2>', ':NvimTreeToggle<CR>', {silent=true})
+keymap('n', '<F2>', ':NeoTreeRevealToggle<CR>', {silent=true})
 keymap('n', '<C-e>', '$', {})
 keymap('n', '<C-a>', '0', {})
 
