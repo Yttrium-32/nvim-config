@@ -1,14 +1,3 @@
-local function open_nvim_tree(data)
-
-  -- if file is [No Name] open NvimTree and focus
-  -- Only open nvim-tree if no file is selected
-  if data.file == "" and vim.bo[data.buf].buftype == "" then
-    require("nvim-tree.api").tree.toggle({ focus = true, find_file = true })
-    return
-  end
-
-end
-
 -- package manager
 require('plugins')
 
@@ -17,17 +6,6 @@ require('keybindings')
 
 -- Import coc config file
 require('coc-config')
-
--- Setup NvimTree
-require("nvim-tree").setup {
-  remove_keymaps = {'f'},
-  renderer = {
-    indent_markers = {
-      enable = true
-    }
-  }
-}
-
 
 -- neovide config
 if vim.g.neovide then
@@ -81,7 +59,4 @@ require('lualine').setup {
     icons_enabled = true
   }
 }
-
--- Open NvimTree on startup
-vim.api.nvim_create_autocmd({ "VimEnter" }, { callback = open_nvim_tree })
 
