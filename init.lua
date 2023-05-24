@@ -38,12 +38,12 @@ require("indent_blankline").setup {
 
 -- Treesitter config
 require('nvim-treesitter.configs').setup {
-highlight = { -- enable highlighting
-  enable = true,
-  },
-indent = {
-  enable = true, -- default is disabled anyways
-  }
+  highlight = { -- enable highlighting
+      enable = true,
+    },
+  indent = {
+      enable = true, -- default is disabled anyways
+    }
 }
 
 -- Setup NeoTree
@@ -89,12 +89,24 @@ require("neo-tree").setup({
       { source = "filesystem", display_name = " 󰉓 Files " },
       { source = "git_status", display_name = " 󰊢 Git " },
     },
-  },
-  -- Other options ...
+  }
 })
 
 -- Setup Buffer line
-require("bufferline").setup()
+require("bufferline").setup{
+  options = {
+    separator_style = "thick",
+    offsets = {
+      {
+          filetype = "neo-tree",
+          text = "Neo Tree",
+          text_align = "left",
+          highlight = "String",
+          separator = "", -- use a "true" to enable the default, or set your own character
+      }
+    }
+  }
+}
 
 -- Setup nvim-colorizer
 require("colorizer").setup()

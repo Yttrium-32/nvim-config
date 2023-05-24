@@ -1,7 +1,7 @@
 vim.g.mapleader = " "
 local keymap = vim.api.nvim_set_keymap
 
-keymap('n', '<F2>', ':NeoTreeRevealToggle<CR>', {silent=true})
+keymap('n', '<F2>', ':Neotree toggle reveal<CR>', {silent=true})
 keymap('n', '<C-e>', '$', {})
 keymap('n', '<C-a>', '0', {})
 
