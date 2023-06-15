@@ -1,4 +1,5 @@
 lua/keybindings.lua.new
 old/
 plugin/
+.vim/
 
