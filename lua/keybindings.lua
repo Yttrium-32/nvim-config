@@ -2,8 +2,6 @@ vim.g.mapleader = " "
 local keymap = vim.api.nvim_set_keymap
 
 keymap('n', '<F2>', ':Neotree toggle reveal<CR>', {silent=true})
-keymap('n', '<C-e>', '$', {})
-keymap('n', '<C-a>', '0', {})
 
 -- Move line up and down in normal mode using Alt + j/k
 keymap('n', '<A-k>', ':m .-2<CR>==', {silent=true})
