@@ -6,6 +6,7 @@ require('plugins')
 require('plugin-configs.bufferline')
 require('plugin-configs.neo-tree')
 require('plugin-configs.nvim-treesitter')
+require('plugin-configs.lsp-config')
 
 -- import key bindings
 require('keybindings')

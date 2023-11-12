@@ -4,19 +4,20 @@ require('packer').startup(function()
 	-- Manager packer using packer
 	use 'wbthomason/packer.nvim'
 
-	-- Conqueror of Completion
-	--use {
-		--'neoclide/coc.nvim', 
-		--branch = 'release'
-	--}
-
 	-- Treesitter
-	use { 
+	use {
 		'nvim-treesitter/nvim-treesitter',
 		run = function()
 			local ts_update = require('nvim-treesitter.install').update({ with_sync = true })
 			ts_update()
 		end,
+	}
+
+	-- Lsp config
+	use {
+		'williamboman/mason.nvim',
+		'williamboman/mason-lspconfig.nvim',
+		'neovim/nvim-lspconfig'
 	}
 
 	-- Surround text with stuff
@@ -29,7 +30,7 @@ require('packer').startup(function()
 	use 'jiangmiao/auto-pairs'
 
 	-- One dark color scheme
-	use 'joshdick/onedark.vim' 
+	use 'joshdick/onedark.vim'
 
 	-- Comment out lines
 	use 'scrooloose/nerdcommenter'
@@ -47,12 +48,12 @@ require('packer').startup(function()
 	use {
 		'nvim-lualine/lualine.nvim',
 		requires = { 'kyazdani42/nvim-web-devicons', opt = true },
-	} 
+	}
 
 	-- Buffer line
 	use {
-		'akinsho/bufferline.nvim', 
-		tag = "*", 
+		'akinsho/bufferline.nvim',
+		tag = "*",
 		requires = 'kyazdani42/nvim-web-devicons'
 	}
 
@@ -60,25 +61,15 @@ require('packer').startup(function()
 	use {
   "nvim-neo-tree/neo-tree.nvim",
     branch = "v2.x",
-    requires = { 
+    requires = {
       "nvim-lua/plenary.nvim",
       "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
       "MunifTanjim/nui.nvim",
     }
   }
 
-	-- code snippets
-	use 'honza/vim-snippets'
-
 	-- Color highlighter
 	use 'norcalli/nvim-colorizer.lua'
-
-	-- Lsp config
-	use {
-		'williamboman/mason.nvim',
-		'williamboman/mason-lspconfig.nvim',
-		'neovim/nvim-lspconfig'
-	}
 
 	---- Notes using the Zettlekasten method
 	--use 'mickael-menu/zk-nvim'
