@@ -114,3 +114,5 @@ require('lualine').setup {
   }
 }
 
+--require("zk").setup()
+

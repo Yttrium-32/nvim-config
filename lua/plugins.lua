@@ -11,7 +11,13 @@ require('packer').startup(function()
 	}
 
 	-- Treesitter
-	use 'nvim-treesitter/nvim-treesitter'
+	use { 
+		'nvim-treesitter/nvim-treesitter',
+		run = function()
+			local ts_update = require('nvim-treesitter.install').update({ with_sync = true })
+			ts_update()
+		end,
+	}
 
 	-- Surround text with stuff
 	use 'tpope/vim-surround'
@@ -66,6 +72,12 @@ require('packer').startup(function()
 
 	-- Color highlighter
 	use 'norcalli/nvim-colorizer.lua'
+
+	---- Notes using the Zettlekasten method
+	--use 'mickael-menu/zk-nvim'
+
+	---- Fuzzy finder
+	--use 'junegunn/fzf'
 
 end)
 
