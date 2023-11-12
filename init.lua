@@ -6,6 +6,7 @@ require('plugins')
 require('plugin-configs.bufferline')
 require('plugin-configs.neo-tree')
 require('plugin-configs.nvim-treesitter')
+require('plugin-configs.nvim-cmp')
 require('plugin-configs.lsp-config')
 
 -- import key bindings
@@ -31,20 +32,10 @@ vim.opt.termguicolors = true
 -- Enable system clipboard
 vim.opt.clipboard:append("unnamedplus")
 
--- Indent guide config
 vim.opt.list = true
 
+-- Indent guide config
 require("ibl").setup()
-
--- Treesitter config
-require('nvim-treesitter.configs').setup {
-  highlight = { -- enable highlighting
-      enable = true,
-    },
-  indent = {
-      enable = true, -- default is disabled anyways
-    }
-}
 
 -- Setup nvim-colorizer
 require("colorizer").setup()

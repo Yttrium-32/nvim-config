@@ -20,6 +20,15 @@ require('packer').startup(function()
 		'neovim/nvim-lspconfig'
 	}
 
+	-- Autocompletion engine
+	use {
+		'hrsh7th/nvim-cmp',
+		'hrsh7th/cmp-nvim-lsp'
+	}
+
+	-- Code snippets
+	use 'L3MON4D3/LuaSnip'
+
 	-- Surround text with stuff
 	use 'tpope/vim-surround'
 
