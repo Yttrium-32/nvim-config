@@ -27,6 +27,8 @@ require('packer').startup(function()
 		'saadparwaiz1/cmp_luasnip'
 	}
 
+
+	-- Source for snippets
 	use 'rafamadriz/friendly-snippets'
 
 	-- Code snippets

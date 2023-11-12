@@ -11,8 +11,12 @@ local cmp = require("cmp")
 require("luasnip.loaders.from_vscode").lazy_load()
 
 cmp.setup({
-  mapping = cmp.mapping.preset.insert({
 
+  -- autocomplete to first option on enter
+  cmp.mapping.confirm({ select = true }),
+
+  mapping = cmp.mapping.preset.insert({
+    -- Autocompletion using tab
     ["<Tab>"] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.select_next_item()
@@ -41,18 +45,26 @@ cmp.setup({
       ['<C-f>'] = cmp.mapping.scroll_docs(4),
       ['<C-o>'] = cmp.mapping.complete(),
       ['<C-e>'] = cmp.mapping.abort(),
-      ['<CR>'] = cmp.mapping.confirm({ select = true }),
+      ['<CR>'] = cmp.mapping.confirm({ select = true, behavior = cmp.ConfirmBehavior.Insert }),
     }),
+
+  -- Highlight first selection in autocomplete menu
+  completion = {
+    completeopt = 'menu,menuone,noinsert'
+  },
+
   snippet = {
     expand = function(args)
       require('luasnip').lsp_expand(args.body)
     end,
   },
+
   sources = cmp.config.sources({
     { name = 'nvim_lsp' },
     { name = 'luasnip' },
   }, {
     { name = 'buffer' },
   }),
+
 })
 
