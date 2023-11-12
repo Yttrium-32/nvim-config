@@ -1,5 +1,5 @@
 -- Using packer for plugin manager
-
+--
 require('packer').startup(function()
 	-- Manager packer using packer
 	use 'wbthomason/packer.nvim'
@@ -27,6 +27,11 @@ require('packer').startup(function()
 		'saadparwaiz1/cmp_luasnip'
 	}
 
+	-- Prettier diagnostics
+	use {
+		'folke/trouble.nvim',
+		requires = 'nvim-tree/nvim-web-devicons'
+	}
 
 	-- Source for snippets
 	use 'rafamadriz/friendly-snippets'
@@ -61,14 +66,14 @@ require('packer').startup(function()
 	-- Status line
 	use {
 		'nvim-lualine/lualine.nvim',
-		requires = { 'kyazdani42/nvim-web-devicons', opt = true },
+		requires = { 'nvim-tree/nvim-web-devicons', opt = true },
 	}
 
 	-- Buffer line
 	use {
 		'akinsho/bufferline.nvim',
 		tag = "*",
-		requires = 'kyazdani42/nvim-web-devicons'
+		requires = 'nvim-tree/nvim-web-devicons'
 	}
 
 	-- File viewer
