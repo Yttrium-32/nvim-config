@@ -1,8 +1,7 @@
 -- Configuration file for neovim
 
--- package manager
+-- plugins manager
 require('plugins')
-
 -- Configuration for various plugins
 require('plugin-configs.bufferline')
 require('plugin-configs.neo-tree')
@@ -10,9 +9,6 @@ require('plugin-configs.nvim-treesitter')
 
 -- import key bindings
 require('keybindings')
-
--- Import coc config file
-require('coc-config')
 
 -- neovide config
 if vim.g.neovide then

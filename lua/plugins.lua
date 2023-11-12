@@ -5,10 +5,10 @@ require('packer').startup(function()
 	use 'wbthomason/packer.nvim'
 
 	-- Conqueror of Completion
-	use {
-		'neoclide/coc.nvim', 
-		branch = 'release'
-	}
+	--use {
+		--'neoclide/coc.nvim', 
+		--branch = 'release'
+	--}
 
 	-- Treesitter
 	use { 
@@ -72,6 +72,13 @@ require('packer').startup(function()
 
 	-- Color highlighter
 	use 'norcalli/nvim-colorizer.lua'
+
+	-- Lsp config
+	use {
+		'williamboman/mason.nvim',
+		'williamboman/mason-lspconfig.nvim',
+		'neovim/nvim-lspconfig'
+	}
 
 	---- Notes using the Zettlekasten method
 	--use 'mickael-menu/zk-nvim'
