@@ -34,6 +34,9 @@ vim.opt.clipboard:append("unnamedplus")
 
 vim.opt.list = true
 
+-- Display signs in number column
+vim.opt.signcolumn = 'number'
+
 -- Indent guide config
 require("ibl").setup()
 
@@ -42,10 +45,24 @@ require("colorizer").setup()
 
 -- Setup Lua line
 require('lualine').setup {
-  options = {
+  opt = {
     icons_enabled = true
   }
 }
+
+-- Setup trouble.nvim
+require('trouble').setup {
+  opts = {
+    icons = true,
+    use_diagnostic_signs = true
+  }
+}
+
+local signs = { Error = " ", Warn = " ", Hint = "", Info = " " }
+for type, icon in pairs(signs) do
+  local hl = "DiagnosticSign" .. type
+  vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
+end
 
 --require("zk").setup()
 
