@@ -23,8 +23,11 @@ require('packer').startup(function()
 	-- Autocompletion engine
 	use {
 		'hrsh7th/nvim-cmp',
-		'hrsh7th/cmp-nvim-lsp'
+		'hrsh7th/cmp-nvim-lsp',
+		'saadparwaiz1/cmp_luasnip'
 	}
+
+	use 'rafamadriz/friendly-snippets'
 
 	-- Code snippets
 	use 'L3MON4D3/LuaSnip'
