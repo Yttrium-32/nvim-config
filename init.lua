@@ -43,10 +43,6 @@ vim.opt.list = true
 -- Display signs in number column
 vim.opt.signcolumn = 'number'
 
-vim.opt.foldmethod = 'expr'
-vim.opt.nofoldenable = true
-vim.cmd('set foldexpr = nvim_treesitter#foldexpr()')
-
 ----> Smaller configuration for plugins <----
 -- Larger configs go in their own file in lua/plugin-configs
 
