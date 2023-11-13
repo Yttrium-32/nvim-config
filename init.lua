@@ -5,6 +5,7 @@
 --  \ \_\ \_\\ \____\\ \____/ \ \___/  \ \_\\ \_\ \_\ \_\
 --   \/_/\/_/ \/____/ \/___/   \/__/    \/_/ \/_/\/_/\/_/ config
 
+
 ----> Imports from other files <----
 -- plugins manager
 require('plugins')
@@ -23,9 +24,8 @@ if vim.g.neovide then
   require('neovide')
 end
 
+
 ----> Random other configuration <----
--- Change color scheme to onedark (might wanna make my own colorscheme soon)
-vim.cmd('colorscheme onedark')
 vim.bo.synmaxcol = 300 -- set maximum amount of colums for synatax higlighting
 
 vim.opt.scrolloff = 7
@@ -43,11 +43,52 @@ vim.opt.list = true
 -- Display signs in number column
 vim.opt.signcolumn = 'number'
 
+-- Change color scheme to onedark
+vim.cmd 'colorscheme onedark'
+
+-- Disable continuation of comments to the next line
+vim.cmd 'au FileType * set fo-=c fo-=r fo-=o'
+
+ -- Set filetype dosini to .conf file to treesitter highlight
+vim.cmd 'au BufNewFile,BufRead *.conf setf dosini'
+
+
 ----> Smaller configuration for plugins <----
 -- Larger configs go in their own file in lua/plugin-configs
 
 -- Indent guide config
-require("ibl").setup()
+local highlight = {
+    "RainbowRed",
+    "RainbowYellow",
+    "RainbowBlue",
+    "RainbowOrange",
+    "RainbowGreen",
+    "RainbowViolet",
+    "RainbowCyan",
+}
+local hooks = require "ibl.hooks"
+-- create the highlight groups in the highlight setup hook, so they are reset
+-- every time the colorscheme changes
+hooks.register(hooks.type.HIGHLIGHT_SETUP, function()
+    vim.api.nvim_set_hl(0, "RainbowRed", { fg = "#E06C75" })
+    vim.api.nvim_set_hl(0, "RainbowYellow", { fg = "#E5C07B" })
+    vim.api.nvim_set_hl(0, "RainbowBlue", { fg = "#61AFEF" })
+    vim.api.nvim_set_hl(0, "RainbowOrange", { fg = "#D19A66" })
+    vim.api.nvim_set_hl(0, "RainbowGreen", { fg = "#98C379" })
+    vim.api.nvim_set_hl(0, "RainbowViolet", { fg = "#C678DD" })
+    vim.api.nvim_set_hl(0, "RainbowCyan", { fg = "#56B6C2" })
+end)
+vim.g.rainbow_delimiters = { highlight = highlight }
+require("ibl").setup {
+  indent = {
+    char = '┊',
+  },
+  scope = {
+    enabled = true,
+    highlight = highlight
+  }
+}
+hooks.register(hooks.type.SCOPE_HIGHLIGHT, hooks.builtin.scope_highlight_from_extmark)
 
 -- Setup nvim-colorizer
 require("colorizer").setup()
