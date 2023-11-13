@@ -1,5 +1,5 @@
 -- Using packer for plugin manager
---
+
 require('packer').startup(function()
 	-- Manager packer using packer
 	use 'wbthomason/packer.nvim'
@@ -33,11 +33,15 @@ require('packer').startup(function()
 		requires = 'nvim-tree/nvim-web-devicons'
 	}
 
-	-- Source for snippets
-	use 'rafamadriz/friendly-snippets'
-
 	-- Code snippets
-	use 'L3MON4D3/LuaSnip'
+	use {
+		'L3MON4D3/LuaSnip',
+		tag = "v2.*",
+		run = "make install_jsregexp",
+
+		-- Source for snippets
+		requires =  'rafamadriz/friendly-snippets'
+	}
 
 	-- Surround text with stuff
 	use 'tpope/vim-surround'
@@ -78,11 +82,11 @@ require('packer').startup(function()
 
 	-- File viewer
 	use {
-  "nvim-neo-tree/neo-tree.nvim",
+		"nvim-neo-tree/neo-tree.nvim",
     branch = "v2.x",
     requires = {
       "nvim-lua/plenary.nvim",
-      "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
+      "nvim-tree/nvim-web-devicons",
       "MunifTanjim/nui.nvim",
     }
   }
@@ -90,11 +94,12 @@ require('packer').startup(function()
 	-- Color highlighter
 	use 'norcalli/nvim-colorizer.lua'
 
-	---- Notes using the Zettlekasten method
-	--use 'mickael-menu/zk-nvim'
-
-	---- Fuzzy finder
-	--use 'junegunn/fzf'
+	-- Notes written in markdown
+	use {
+		'jakewvincent/mkdnflow.nvim',
+		rocks = 'luautf8',
+		require = 'nvim-lua/plenary.nvim'
+}
 
 end)
 

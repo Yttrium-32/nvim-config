@@ -15,7 +15,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
     vim.keymap.set('n', 'gr', '<cmd>lua vim.lsp.buf.references()<cr>', opts)
     vim.keymap.set('n', 'gs', '<cmd>lua vim.lsp.buf.signature_help()<cr>', opts)
     vim.keymap.set('n', '<Leader>rn', '<cmd>lua vim.lsp.buf.rename()<cr>', opts)
-    vim.keymap.set({'n', 'x'}, '<F3>', '<cmd>lua vim.lsp.buf.format({async = true})<cr>', opts)
+    vim.keymap.set({'n', 'x'}, '<C-f>', '<cmd>lua vim.lsp.buf.format({async = true})<cr>', opts)
     vim.keymap.set('n', '<F4>', '<cmd>lua vim.lsp.buf.code_action()<cr>', opts)
 
     vim.keymap.set('n', 'gl', '<cmd>lua vim.diagnostic.open_float()<cr>', opts)
@@ -33,7 +33,7 @@ end
 -- Mason config
 require('mason').setup({})
 require('mason-lspconfig').setup({
-  ensure_installed = { "lua_ls", "pyright" },
+  ensure_installed = { "lua_ls", "pyright", "marksman", "tailwindcss", "html", },
   handlers = {
     default_setup,
 
@@ -41,13 +41,36 @@ require('mason-lspconfig').setup({
     lua_ls = function()
       require('lspconfig').lua_ls.setup({
         settings = {
-        Lua = {
-          diagnostics = {
-            globals = { "vim", "use" }
+          Lua = {
+            diagnostics = {
+              globals = { "vim", "use" }
             }
           }
         }
+      })
+    end,
 
+    pyright = function ()
+      require('lspconfig').pyright.setup({
+        settings = {
+          python = {
+            analysis = {
+              typeCheckingMode = "off"
+            }
+          }
+        }
+      })
+    end,
+
+    tailwindcss = function ()
+      require('lspconfig').tailwindcss.setup({
+        filetypes = { "html", "htmldjango" }
+      })
+    end,
+
+    html = function ()
+      require('lspconfig').html.setup({
+        filetypes = { "html", "htmldjango" }
       })
     end,
 

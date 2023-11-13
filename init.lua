@@ -58,11 +58,20 @@ require('trouble').setup {
   }
 }
 
+-- Setup Markdown flow
+require('mkdnflow').setup {
+  mappings = {
+    MkdnEnter = {{'i', 'n', 'v'}, '<CR>'}
+  }
+}
+
 local signs = { Error = " ", Warn = " ", Hint = "", Info = " " }
 for type, icon in pairs(signs) do
   local hl = "DiagnosticSign" .. type
   vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
 end
 
---require("zk").setup()
+-- Use html snippets in htmldjango and vice versa
+require('luasnip').filetype_extend("htmldjango", {"html"})
+require('luasnip').filetype_extend("html", {"htmldjango"})
 
