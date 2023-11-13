@@ -33,7 +33,7 @@ end
 -- Mason config
 require('mason').setup({})
 require('mason-lspconfig').setup({
-  ensure_installed = { "lua_ls", "pyright", "marksman", "tailwindcss", "html", },
+  ensure_installed = { "lua_ls", "pyright", "marksman", "tailwindcss", "html", "clangd", },
   handlers = {
     default_setup,
 

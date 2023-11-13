@@ -11,7 +11,6 @@ local cmp = require("cmp")
 require("luasnip.loaders.from_vscode").lazy_load()
 
 cmp.setup({
-
   -- autocomplete to first option on enter
   cmp.mapping.confirm({ select = true }),
 
@@ -59,12 +58,13 @@ cmp.setup({
     end,
   },
 
-  sources = cmp.config.sources({
-    { name = 'nvim_lsp' },
-    { name = 'luasnip' },
-    { name = 'mkdnflow' },
-  }, {
-    { name = 'buffer' },
-  }),
+  sources = {
+    { name = "nvim_lsp" },
+    { name = "buffer" },
+    { name = "cmdline" },
+    { name = "path" },
+    { name = "luasnip" },
+  }
+
 })
 
