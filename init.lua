@@ -11,6 +11,7 @@
 require('plugins')
 -- Configuration for various plugins
 require('plugin-configs.bufferline')
+require('plugin-configs.ibl')
 require('plugin-configs.neo-tree')
 require('plugin-configs.nvim-treesitter')
 require('plugin-configs.nvim-cmp')
@@ -32,9 +33,6 @@ vim.opt.scrolloff = 7
 vim.opt.number = true
 vim.opt.relativenumber = true
 
--- Set termguicolors
-vim.opt.termguicolors = true
-
 -- Enable system clipboard
 vim.opt.clipboard:append("unnamedplus")
 
@@ -55,50 +53,6 @@ vim.cmd 'au BufNewFile,BufRead *.conf setf dosini'
 
 ----> Smaller configuration for plugins <----
 -- Larger configs go in their own file in lua/plugin-configs
-
--- Indent guide config
-local highlight = {
-    "RainbowRed",
-    "RainbowYellow",
-    "RainbowBlue",
-    "RainbowOrange",
-    "RainbowGreen",
-    "RainbowViolet",
-    "RainbowCyan",
-}
-local hooks = require "ibl.hooks"
--- create the highlight groups in the highlight setup hook, so they are reset
--- every time the colorscheme changes
-hooks.register(hooks.type.HIGHLIGHT_SETUP, function()
-    vim.api.nvim_set_hl(0, "RainbowRed", { fg = "#E06C75" })
-    vim.api.nvim_set_hl(0, "RainbowYellow", { fg = "#E5C07B" })
-    vim.api.nvim_set_hl(0, "RainbowBlue", { fg = "#61AFEF" })
-    vim.api.nvim_set_hl(0, "RainbowOrange", { fg = "#D19A66" })
-    vim.api.nvim_set_hl(0, "RainbowGreen", { fg = "#98C379" })
-    vim.api.nvim_set_hl(0, "RainbowViolet", { fg = "#C678DD" })
-    vim.api.nvim_set_hl(0, "RainbowCyan", { fg = "#56B6C2" })
-end)
-vim.g.rainbow_delimiters = { highlight = highlight }
-require("ibl").setup {
-  indent = {
-    char = '┊',
-  },
-  scope = {
-    enabled = true,
-    highlight = highlight
-  }
-}
-hooks.register(hooks.type.SCOPE_HIGHLIGHT, hooks.builtin.scope_highlight_from_extmark)
-
--- Setup nvim-colorizer
-require("colorizer").setup()
-
--- Setup Lua line
-require('lualine').setup {
-  opt = {
-    icons_enabled = true
-  }
-}
 
 -- Setup trouble.nvim
 require('trouble').setup {
