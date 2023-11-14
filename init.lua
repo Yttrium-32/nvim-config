@@ -49,6 +49,7 @@ vim.cmd 'au FileType * set fo-=c fo-=r fo-=o'
 
  -- Set filetype dosini to .conf file to treesitter highlight
 vim.cmd 'au BufNewFile,BufRead *.conf setf dosini'
+vim.cmd 'au BufNewFile,BufRead *.html setf htmldjango'
 
 
 ----> Smaller configuration for plugins <----
