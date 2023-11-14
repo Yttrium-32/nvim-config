@@ -1,6 +1,7 @@
 -- Configuration for lsp
 local lspconfig = require('lspconfig')
-local lsp_capabilities = require('cmp_nvim_lsp').default_capabilities()
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+local lsp_capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 
 vim.api.nvim_create_autocmd('LspAttach', {
   desc = 'LSP actions',
@@ -33,7 +34,7 @@ end
 -- Mason config
 require('mason').setup({})
 require('mason-lspconfig').setup({
-  ensure_installed = { "lua_ls", "pyright", "marksman", "tailwindcss", "html", "clangd", },
+  ensure_installed = { "lua_ls", "pyright", "marksman", "clangd", "html", "tailwindcss"},
   handlers = {
     default_setup,
 
