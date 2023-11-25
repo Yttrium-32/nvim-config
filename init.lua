@@ -38,6 +38,13 @@ vim.opt.clipboard:append("unnamedplus")
 
 vim.opt.list = true
 
+vim.bo.expandtab = true
+vim.opt.tabstop = 2
+vim.opt.shiftwidth = 2
+
+vim.opt.ai = true
+vim.opt.si = true
+
 -- Display signs in number column
 vim.opt.signcolumn = 'number'
 
