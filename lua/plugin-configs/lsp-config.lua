@@ -53,6 +53,7 @@ require('mason-lspconfig').setup({
 
     pyright = function ()
       require('lspconfig').pyright.setup({
+        filetypes = { 'python' },
         settings = {
           python = {
             analysis = {
