@@ -50,9 +50,6 @@ require('packer').startup(function()
 	-- Surround text with stuff
 	use 'tpope/vim-surround'
 
-	-- Better syntax support
-	use 'sheerun/vim-polyglot'
-
 	-- Auto pairing for '(' '[' and '{'
 	use 'jiangmiao/auto-pairs'
 
