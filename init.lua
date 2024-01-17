@@ -38,7 +38,7 @@ vim.opt.clipboard:append("unnamedplus")
 
 vim.opt.list = true
 
-vim.bo.expandtab = true
+vim.cmd 'set expandtab'
 vim.opt.tabstop = 2
 vim.opt.shiftwidth = 2
 
