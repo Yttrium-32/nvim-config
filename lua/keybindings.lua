@@ -29,6 +29,3 @@ keymap('n', '<C-w>', ':bd<CR>', {})
 keymap('n', '<C-s>', ':wa<CR>', {})
 keymap('i', '<C-s>', ':wa<CR>', {})
 
--- Remove macro keybind
-keymap('n', 'q', '<Nop>', {})
-
