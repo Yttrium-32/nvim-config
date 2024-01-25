@@ -51,6 +51,9 @@ vim.opt.signcolumn = 'number'
 -- Change color scheme to onedark
 vim.cmd 'colorscheme onedark'
 
+-- Enable spell checking for markdown files
+vim.cmd 'au BufNewFile,BufRead *.md setlocal spell spelllang'
+
 -- Disable continuation of comments to the next line
 vim.cmd 'au FileType * set fo-=c fo-=r fo-=o'
 
