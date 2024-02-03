@@ -53,6 +53,8 @@ require('packer').startup(function()
     requires =  'rafamadriz/friendly-snippets'
   }
 
+  use 'folke/neodev.nvim'
+
   -- Surround text with stuff
   use 'tpope/vim-surround'
 
