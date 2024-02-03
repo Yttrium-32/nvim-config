@@ -27,7 +27,8 @@ end
 
 
 ----> Random other configuration <----
-vim.bo.synmaxcol = 300 -- set maximum amount of colums for synatax higlighting
+-- set maximum amount of colums for synatax higlighting
+vim.bo.synmaxcol = 300
 
 vim.opt.scrolloff = 7
 vim.opt.number = true
@@ -38,12 +39,13 @@ vim.opt.clipboard:append("unnamedplus")
 
 vim.opt.list = true
 
-vim.cmd 'set expandtab'
+-- Expand tab
+vim.opt.expandtab = true
 vim.opt.tabstop = 2
 vim.opt.shiftwidth = 2
 
-vim.opt.ai = true
-vim.opt.si = true
+vim.opt.autoindent = true
+vim.opt.smartindent = true
 
 -- Display signs in number column
 vim.opt.signcolumn = 'number'
