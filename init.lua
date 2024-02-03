@@ -50,6 +50,9 @@ vim.opt.smartindent = true
 -- Display signs in number column
 vim.opt.signcolumn = 'number'
 
+-- highlight column 80
+vim.opt.colorcolumn = '80'
+
 -- Change color scheme to onedark
 vim.cmd 'colorscheme onedark'
 
