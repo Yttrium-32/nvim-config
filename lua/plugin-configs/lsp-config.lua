@@ -1,4 +1,4 @@
-local lsp_zero = require("lsp-zero")
+local lsp_zero = require('lsp-zero')
 
 lsp_zero.set_sign_icons({
   error = " ",
@@ -31,7 +31,15 @@ require('mason-lspconfig').setup({
   handlers = {
     lsp_zero.default_setup,
     lua_ls = function()
-      local lua_opts = lsp_zero.nvim_lua_ls()
+      local lua_opts = lsp_zero.nvim_lua_ls({
+        settings = {
+          Lua = {
+            diagnostics = {
+                globals = { 'use' }
+            }
+          }
+        }
+      })
       require('lspconfig').lua_ls.setup(lua_opts)
     end,
   }
@@ -57,12 +65,12 @@ cmp.setup({
   }),
 })
 
-require("lspconfig").pyright.setup({
+require('lspconfig').pyright.setup({
   settings = {
     python = {
       analysis = {
-        typeCheckingMode = "off",
-        extraPaths = ".."
+        typeCheckingMode = 'off',
+        extraPaths = '..'
       }
     }
   }
