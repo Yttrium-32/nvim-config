@@ -1,7 +1,4 @@
--- Configuration for lsp
-local lspconfig = require('lspconfig')
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-local lsp_capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
+local lsp_zero = require("lsp-zero")
 
 lsp_zero.set_sign_icons({
   error = " ",
@@ -10,57 +7,64 @@ lsp_zero.set_sign_icons({
   info = " "
 })
 
-local default_setup = function(server)
-  lspconfig[server].setup({
-    capabilities = lsp_capabilities,
-  })
-end
+lsp_zero.on_attach(function(client, bufnr)
+  local opts = {buffer = bufnr, remap = false}
 
--- Mason config
+  vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, opts)
+  vim.keymap.set("n", "K", function() vim.lsp.buf.hover() end, opts)
+  vim.keymap.set("n", "[d", function() vim.diagnostic.goto_next() end, opts)
+  vim.keymap.set("n", "]d", function() vim.diagnostic.goto_prev() end, opts)
+  vim.keymap.set("n", "<leader>ca", function() vim.lsp.buf.code_action() end, opts)
+  vim.keymap.set("n", "<leader>rr", function() vim.lsp.buf.references() end, opts)
+  vim.keymap.set("n", "<leader>rn", function() vim.lsp.buf.rename() end, opts)
+  vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help() end, opts)
+end)
+
 require('mason').setup({})
 require('mason-lspconfig').setup({
-  ensure_installed = { "lua_ls", "pyright", "marksman", "clangd", "tailwindcss"},
-  handlers = {
-    default_setup,
-
-    -- Add configurations for each lsp here
-    lua_ls = function()
-      require('lspconfig').lua_ls.setup({
-        settings = {
-          Lua = {
-            diagnostics = {
-              globals = { "vim", "use" }
-            }
-          }
-        }
-      })
-    end,
-
-    pyright = function ()
-      require('lspconfig').pyright.setup({
-        filetypes = { 'python' },
-        settings = {
-          python = {
-            analysis = {
-              typeCheckingMode = "off"
-            }
-          }
-        }
-      })
-    end,
-
-    tailwindcss = function ()
-      require('lspconfig').tailwindcss.setup({
-        filetypes = { "html", "htmldjango" }
-      })
-    end,
-
-    html = function ()
-      require('lspconfig').html.setup({
-        filetypes = { "html", "htmldjango" }
-      })
-    end,
-
+  ensure_installed = {
+    'tsserver',
+    'rust_analyzer',
+    'pyright',
+    'clangd'
   },
+  handlers = {
+    lsp_zero.default_setup,
+    lua_ls = function()
+      local lua_opts = lsp_zero.nvim_lua_ls()
+      require('lspconfig').lua_ls.setup(lua_opts)
+    end,
+  }
+})
+
+local cmp = require('cmp')
+local cmp_select = {behavior = cmp.SelectBehavior.Select}
+
+cmp.setup({
+  sources = {
+    {name = 'path'},
+    {name = 'nvim_lsp'},
+    {name = 'nvim_lua'},
+    {name = 'luasnip', keyword_length = 2},
+    {name = 'buffer', keyword_length = 3},
+  },
+  formatting = lsp_zero.cmp_format(),
+  mapping = cmp.mapping.preset.insert({
+    ['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
+    ['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
+    ['<C-y>'] = cmp.mapping.confirm({ select = true }),
+    ['<C-Space>'] = cmp.mapping.complete(),
+  }),
+})
+
+require("lspconfig").pyright.setup({
+  settings = {
+    python = {
+      analysis = {
+        typeCheckingMode = "off",
+        extraPaths = ".."
+      }
+    }
+  }
 })
 
