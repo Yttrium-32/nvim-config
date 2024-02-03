@@ -14,7 +14,6 @@ require('plugin-configs.bufferline')
 require('plugin-configs.ibl')
 require('plugin-configs.neo-tree')
 require('plugin-configs.nvim-treesitter')
-require('plugin-configs.nvim-cmp')
 require('plugin-configs.lsp-config')
 
 -- import key bindings
