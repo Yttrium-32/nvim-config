@@ -95,11 +95,10 @@ require('packer').startup(function()
 	-- Color highlighter
 	use 'norcalli/nvim-colorizer.lua'
 
-	-- Notes written in markdown
-	use {
-		'jakewvincent/mkdnflow.nvim',
-		rocks = 'luautf8',
-		require = 'nvim-lua/plenary.nvim'
+  -- Notes written in markdown
+  use {
+    'jakewvincent/mkdnflow.nvim',
+    require = 'nvim-lua/plenary.nvim'
 }
 
 end)
