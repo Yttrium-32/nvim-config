@@ -22,9 +22,6 @@ keymap('n', '<S-l>', ':BufferLineCycleNext<CR>', {noremap=true, silent=true})
 keymap('n', '<S-h>', ':BufferLineCyclePrev<CR>', {noremap=true, silent=true})
 keymap('n', '<S-f>', ':BufferLinePick<CR>', {noremap=true, silent=true})
 
--- Close current buffer WITHOUT SAVING
-keymap('n', '<C-w>', ':bd<CR>', {})
-
 -- Save all open buffers
 keymap('n', '<C-s>', ':wa<CR>', {})
 keymap('i', '<C-s>', ':wa<CR>', {})
