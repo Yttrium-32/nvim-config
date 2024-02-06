@@ -89,10 +89,9 @@ require('packer').startup(function()
     requires = 'nvim-tree/nvim-web-devicons'
   }
 
-  -- File viewer
   use {
     "nvim-neo-tree/neo-tree.nvim",
-    branch = "v2.x",
+    branch = "v3.x",
     requires = {
       "nvim-lua/plenary.nvim",
       "nvim-tree/nvim-web-devicons",
@@ -107,7 +106,12 @@ require('packer').startup(function()
   use {
     'jakewvincent/mkdnflow.nvim',
     require = 'nvim-lua/plenary.nvim'
-}
+  }
+
+  use {
+    "SmiteshP/nvim-navic",
+    requires = "neovim/nvim-lspconfig"
+  }
 
 end)
 

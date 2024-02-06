@@ -14,6 +14,7 @@ require('plugin-configs.bufferline')
 require('plugin-configs.ibl')
 require('plugin-configs.nvim-treesitter')
 require('plugin-configs.lsp-config')
+require('plugin-configs.navic')
 
 -- import key bindings
 require('keybindings')
@@ -62,9 +63,12 @@ vim.cmd 'au FileType * set fo-=c fo-=r fo-=o'
 
  -- Set filetype dosini to .conf file to treesitter highlight
 vim.cmd 'au BufNewFile,BufRead *.conf setf dosini'
+
 -- Set filetype of html files to htmldjango for autocompletion
 vim.cmd 'au BufNewFile,BufRead *.html setf htmldjango'
 
+-- Disable winbar for nofile buffers
+vim.cmd 'au VimEnter,BufWinEnter * if &buftype == "nofile" | setlocal winbar=%f | endif'
 
 ----> Smaller configuration for plugins <----
 -- Larger configs go in their own file in lua/plugin-configs
