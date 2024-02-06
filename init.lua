@@ -24,7 +24,6 @@ if vim.g.neovide then
   require('neovide')
 end
 
-
 ----> Random other configuration <----
 -- set maximum amount of colums for synatax higlighting
 vim.bo.synmaxcol = 300
@@ -68,7 +67,7 @@ vim.cmd 'au BufNewFile,BufRead *.conf setf dosini'
 vim.cmd 'au BufNewFile,BufRead *.html setf htmldjango'
 
 -- Disable winbar for nofile buffers
-vim.cmd 'au VimEnter,BufWinEnter * if &buftype == "nofile" | setlocal winbar=%f | endif'
+vim.cmd 'au VimEnter,BufWinEnter * if &filetype == "neo-tree" | setlocal winbar=%f | endif'
 
 ----> Smaller configuration for plugins <----
 -- Larger configs go in their own file in lua/plugin-configs
