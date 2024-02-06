@@ -9,7 +9,7 @@ lsp_zero.set_sign_icons({
 
 vim.diagnostic.config({
   float = {
-     style = 'minimal',
+    style = 'minimal',
     border = 'single',
     source = 'always',
     header = '',
