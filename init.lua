@@ -12,7 +12,6 @@ require('plugins')
 -- Configuration for various plugins
 require('plugin-configs.bufferline')
 require('plugin-configs.ibl')
-require('plugin-configs.neo-tree')
 require('plugin-configs.nvim-treesitter')
 require('plugin-configs.lsp-config')
 
@@ -84,4 +83,14 @@ require('mkdnflow').setup {
     MkdnEnter = {{'i', 'n', 'v'}, '<CR>'}
   }
 }
+
+-- Setup NeoTree
+require("neo-tree").setup({
+  filesystem = {
+    hijack_netrw_behavior = "open_default",
+  },
+  window = {
+    position = "current"
+  }
+})
 
