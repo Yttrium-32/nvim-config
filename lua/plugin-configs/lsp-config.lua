@@ -69,7 +69,7 @@ end
 local luasnip = require("luasnip")
 local cmp = require('cmp')
 
-require("luasnip.loaders.from_vscode").lazy_load()
+require('luasnip.loaders.from_vscode').lazy_load()
 
 cmp.setup({
   -- autocomplete to first option on enter
@@ -120,8 +120,8 @@ cmp.setup({
     {name = 'path'},
     {name = 'nvim_lsp'},
     {name = 'nvim_lua'},
-    {name = 'luasnip', keyword_length = 2},
-    {name = 'buffer', keyword_length = 3},
+    {name = 'luasnip'},
+    {name = 'buffer'},
   },
   formatting = lsp_zero.cmp_format(),
 })
@@ -138,6 +138,6 @@ require('lspconfig').pyright.setup({
 })
 
 require('lspconfig').html.setup({
-  filetypes = { "html", "htmldjango" }
+  filetypes = { "html" }
 })
 
