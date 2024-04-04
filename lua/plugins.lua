@@ -43,8 +43,6 @@ return require('packer').startup(function(use)
 	}
 
 	-- Auto pair some symbols
-	use {
-		"windwp/nvim-autopairs",
-		event = "InsertEnter",
-	}
+	use 'jiangmiao/auto-pairs'
 end)
+
