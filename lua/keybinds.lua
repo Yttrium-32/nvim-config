@@ -1,6 +1,6 @@
 -- Some local variables for ease of use
 local augroup = vim.api.nvim_create_augroup
-local LspBindGroup = augroup('ThePrimeagen', {})
+local LspBindGroup = augroup('LspBindGroup', {})
 local autocmd = vim.api.nvim_create_autocmd
 local builtin = require('telescope.builtin')
 local keymap = vim.keymap.set
@@ -8,8 +8,16 @@ local keymap = vim.keymap.set
 -- Bind leader key to spacebar
 vim.g.mapleader = " "
 
+-- Move line up and down in normal mode using Alt + j/k
+keymap('n', '<A-k>', ':m .-2<CR>==', {silent=true})
+keymap('n', '<A-j>', ':m .+1<CR>==', {silent=true})
+
+-- Quickly insert new line
+keymap('n', '<Leader>o', 'o<Esc>k', {})
+keymap('n', '<Leader>O', 'O<Esc>j', {})
+
 -- Open filetree with F2
-keymap("n", "<F2>", vim.cmd.Ex)
+keymap("n", "<F2>", ':Neotree toggle right reveal<CR>', {silent=true})
 
 -- Telescope keybinds
 keymap('n', '<leader>pf', builtin.find_files, {})
