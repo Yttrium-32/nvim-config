@@ -26,6 +26,11 @@ keymap('n', '<leader>ps', function()
 	builtin.grep_string({ search = vim.fn.input("Grep > ") })
 end)
 
+-- Navigation of bufferline
+keymap('n', '<S-w>l', ':BufferLineCycleNext<CR>', {noremap=true})
+keymap('n', '<S-w>h', ':BufferLineCyclePrev<CR>', {noremap=true})
+keymap('n', '<S-w>f', ':BufferLinePick<CR>', {noremap=true})
+
 -- Open undotree
 keymap('n', '<leader>u', vim.cmd.UndotreeToggle)
 
