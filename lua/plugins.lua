@@ -68,5 +68,8 @@ return require('packer').startup(function(use)
 		 tag = "*",
 		 requires = 'nvim-tree/nvim-web-devicons'
 	 }
+
+	 -- Plugin for commenting and uncommenting text
+	 use 'preservim/nerdcommenter'
 end)
 
