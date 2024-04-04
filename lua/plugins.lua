@@ -1,117 +1,84 @@
--- Using packer for plugin manager
+vim.cmd [[packadd packer.nvim]]
 
-require('packer').startup(function()
-  -- Manager packer using packer
-  use 'wbthomason/packer.nvim'
+return require('packer').startup(function(use)
+	-- Packer can manage itself
+	use 'wbthomason/packer.nvim'
 
-  -- Treesitter
-  use {
-    'nvim-treesitter/nvim-treesitter',
-    requires = 'David-Kunz/markid',
-    run = function()
-      local ts_update = require('nvim-treesitter.install').update({ with_sync = true })
-      ts_update()
-    end,
-  }
+	-- Fuzzy finder
+	use {
+		'nvim-telescope/telescope.nvim', tag = '0.1.6',
+		requires = { {'nvim-lua/plenary.nvim'} }
+	}
 
-  use {
-    'VonHeikemen/lsp-zero.nvim',
-    branch = 'v3.x',
-    requires = {
-      -- LSP Support
-      {'neovim/nvim-lspconfig'},
-      {'williamboman/mason.nvim'},
-      {'williamboman/mason-lspconfig.nvim'},
+	-- One dark color scheme
+	use 'joshdick/onedark.vim'
 
-      -- Autocompletion
-      {'hrsh7th/nvim-cmp'},
-      {'hrsh7th/cmp-buffer'},
-      {'hrsh7th/cmp-path'},
-      {'saadparwaiz1/cmp_luasnip'},
-      {'hrsh7th/cmp-nvim-lsp'},
-      {'hrsh7th/cmp-nvim-lua'},
+	-- Treesitter for highlights
+	use {
+		'nvim-treesitter/nvim-treesitter',
+		run = function()
+			local ts_update = require('nvim-treesitter.install').update({ with_sync = true })
+			ts_update()
+		end,
+	}
 
-      -- Snippets
-      {'L3MON4D3/LuaSnip'},
-      {'rafamadriz/friendly-snippets'},
-    }
-  }
+	-- Tree view for undo
+	use 'mbbill/undotree'
 
-  -- Prettier diagnostics
-  use {
-    'folke/trouble.nvim',
-    requires = 'nvim-tree/nvim-web-devicons'
-  }
+	-- all plugins for lsp configuration
+	use {
+		'neovim/nvim-lspconfig',
+		requires = {
+			{'williamboman/mason.nvim'},
+			{'williamboman/mason-lspconfig.nvim'},
+			{'hrsh7th/cmp-nvim-lsp'},
+			{'hrsh7th/cmp-buffer'},
+			{'hrsh7th/cmp-path'},
+			{'hrsh7th/cmp-cmdline'},
+			{'hrsh7th/nvim-cmp'},
+			{'L3MON4D3/LuaSnip'},
+			{'saadparwaiz1/cmp_luasnip'},
+			{'j-hui/fidget.nvim'},
+		}
+	}
 
-  -- Code snippets
-  use {
-    'L3MON4D3/LuaSnip',
-    tag = "v2.*",
-    run = "make install_jsregexp",
+	-- Auto pair some symbols
+	use 'jiangmiao/auto-pairs'
 
-    -- Source for snippets
-    requires =  'rafamadriz/friendly-snippets'
-  }
+	-- A sane file tree
+	use {
+		"nvim-neo-tree/neo-tree.nvim",
+		branch = "v3.x",
+		requires = {
+			"nvim-lua/plenary.nvim",
+			"nvim-tree/nvim-web-devicons",
+			"MunifTanjim/nui.nvim",
+		}
+	}
 
-  use 'folke/neodev.nvim'
+	-- Status line
+	use {
+		'nvim-lualine/lualine.nvim',
+		requires = { 'nvim-tree/nvim-web-devicons', opt = true },
+	}
 
-  -- Surround text with stuff
-  use 'tpope/vim-surround'
+	 -- Buffer line
+	 use {
+		 'akinsho/bufferline.nvim',
+		 tag = "*",
+		 requires = 'nvim-tree/nvim-web-devicons'
+	 }
 
-  -- Auto pairing for '(' '[' and '{'
-  use 'jiangmiao/auto-pairs'
+	 -- Plugin for commenting and uncommenting text
+	 use 'preservim/nerdcommenter'
 
-  -- One dark color scheme
-  use 'joshdick/onedark.vim'
+	 -- Indentation guide for all line
+	 use 'lukas-reineke/indent-blankline.nvim'
 
-  -- Comment out lines
-  use 'scrooloose/nerdcommenter'
-
-  -- Indentation guide for all line
-  use 'lukas-reineke/indent-blankline.nvim'
-
-  -- Nvim Web devicons
-  use 'kyazdani42/nvim-web-devicons'
-
-  -- One dark theme
-  use 'olimorris/onedarkpro.nvim'
-
-  -- Status line
-  use {
-    'nvim-lualine/lualine.nvim',
-    requires = { 'nvim-tree/nvim-web-devicons', opt = true },
-  }
-
-  -- Buffer line
-  use {
-    'akinsho/bufferline.nvim',
-    tag = "*",
-    requires = 'nvim-tree/nvim-web-devicons'
-  }
-
-  use {
-    "nvim-neo-tree/neo-tree.nvim",
-    branch = "v3.x",
-    requires = {
-      "nvim-lua/plenary.nvim",
-      "nvim-tree/nvim-web-devicons",
-      "MunifTanjim/nui.nvim",
-    }
-  }
-
-  -- Color highlighter
-  use 'norcalli/nvim-colorizer.lua'
-
-  -- Notes written in markdown
-  use {
-    'jakewvincent/mkdnflow.nvim',
-    require = 'nvim-lua/plenary.nvim'
-  }
-
-  use {
-    "SmiteshP/nvim-navic",
-    requires = "neovim/nvim-lspconfig"
-  }
-
+	 -- Prettier diagnostics
+	 use {
+		 'folke/trouble.nvim',
+		 requires = 'nvim-tree/nvim-web-devicons'
+	 }
 end)
 

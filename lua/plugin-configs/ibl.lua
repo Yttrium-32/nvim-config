@@ -1,6 +1,7 @@
 -- Indent guide config
 -- Needs termguicolors to work
 vim.opt.termguicolors = true
+
 local highlight = "RainbowViolet"
 
 local hooks = require "ibl.hooks"
@@ -21,12 +22,3 @@ require("ibl").setup {
 }
 hooks.register(hooks.type.SCOPE_HIGHLIGHT, hooks.builtin.scope_highlight_from_extmark)
 
--- Setup nvim-colorizer
-require("colorizer").setup()
-
--- Setup Lua line
-require('lualine').setup {
-  opt = {
-    icons_enabled = true
-  }
-}

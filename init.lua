@@ -5,24 +5,21 @@
 --  \ \_\ \_\\ \____\\ \____/ \ \___/  \ \_\\ \_\ \_\ \_\
 --   \/_/\/_/ \/____/ \/___/   \/__/    \/_/ \/_/\/_/\/_/ config
 
-
 ----> Imports from other files <----
--- plugins manager
-require('plugins')
+-- Plugin Manager
+require("plugins")
+
+-- Various keybinds
+require("keybinds")
+
 -- Configuration for various plugins
-require('plugin-configs.bufferline')
-require('plugin-configs.ibl')
-require('plugin-configs.nvim-treesitter')
-require('plugin-configs.lsp-config')
-require('plugin-configs.navic')
-
--- import key bindings
-require('keybindings')
-
--- neovide config
-if vim.g.neovide then
-  require('neovide')
-end
+require("plugin-configs.treesitter")
+require("plugin-configs.lsp")
+require("plugin-configs.neo-tree")
+require("plugin-configs.ibl")
+require("plugin-configs.bufferline")
+require("plugin-configs.lualine")
+require("plugin-configs.trouble")
 
 ----> Random other configuration <----
 -- set maximum amount of colums for synatax higlighting
@@ -38,12 +35,22 @@ vim.opt.clipboard:append("unnamedplus")
 vim.opt.list = true
 
 -- Expand tab
-vim.opt.expandtab = true
 vim.opt.tabstop = 4
+vim.opt.softtabstop = 4
 vim.opt.shiftwidth = 4
+vim.opt.expandtab = true
+
+-- Disable line wrap
+vim.opt.wrap = false
 
 vim.opt.autoindent = true
 vim.opt.smartindent = true
+
+-- Enable long term undo's
+vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
+vim.opt.undofile = true
+
+vim.opt.incsearch = true
 
 -- Display signs in number column
 vim.opt.signcolumn = 'number'
@@ -51,11 +58,14 @@ vim.opt.signcolumn = 'number'
 -- highlight column 80
 vim.opt.colorcolumn = '80'
 
--- Change color scheme to onedark
-vim.cmd 'colorscheme onedark'
+-- Fast update time
+vim.opt.updatetime = 50
 
--- Enable spell checking for markdown files
-vim.cmd 'au BufNewFile,BufRead *.md setlocal spell spelllang'
+-- Set current colorscheme to onedark
+vim.cmd("colorscheme onedark")
+
+-- Make the background transparent
+vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
 
 -- Disable continuation of comments to the next line
 vim.cmd 'au FileType * set fo-=c fo-=r fo-=o'
@@ -63,37 +73,6 @@ vim.cmd 'au FileType * set fo-=c fo-=r fo-=o'
  -- Set filetype dosini to .conf file to treesitter highlight
 vim.cmd 'au BufNewFile,BufRead *.conf setf dosini'
 
--- Set filetype of html files to htmldjango for autocompletion
-vim.cmd 'au BufNewFile,BufRead *.html setf htmldjango'
-
 -- Disable winbar for nofile buffers
 vim.cmd 'au VimEnter,BufWinEnter * if &filetype == "neo-tree" | setlocal winbar=%f | endif'
-
-----> Smaller configuration for plugins <----
--- Larger configs go in their own file in lua/plugin-configs
-
--- Setup trouble.nvim
-require('trouble').setup {
-  opts = {
-    icons = true,
-    use_diagnostic_signs = true
-  }
-}
-
--- Setup Markdown flow
-require('mkdnflow').setup {
-  mappings = {
-    MkdnEnter = {{'i', 'n', 'v'}, '<CR>'}
-  }
-}
-
--- Setup NeoTree
-require("neo-tree").setup({
-  filesystem = {
-    hijack_netrw_behavior = "open_default",
-  },
-  window = {
-    position = "current"
-  }
-})
 
