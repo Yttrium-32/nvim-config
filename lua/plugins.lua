@@ -75,5 +75,10 @@ return require('packer').startup(function(use)
 	 -- Indentation guide for all line
 	 use 'lukas-reineke/indent-blankline.nvim'
 
+	 -- Prettier diagnostics
+	 use {
+		 'folke/trouble.nvim',
+		 requires = 'nvim-tree/nvim-web-devicons'
+	 }
 end)
 
