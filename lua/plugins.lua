@@ -71,5 +71,9 @@ return require('packer').startup(function(use)
 
 	 -- Plugin for commenting and uncommenting text
 	 use 'preservim/nerdcommenter'
+
+	 -- Indentation guide for all line
+	 use 'lukas-reineke/indent-blankline.nvim'
+
 end)
 
