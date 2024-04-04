@@ -3,6 +3,11 @@ require("keybinds")
 
 require("plugin-configs.treesitter")
 require("plugin-configs.lsp")
+require("plugin-configs.neo-tree")
+require("plugin-configs.ibl")
+require("plugin-configs.bufferline")
+require("plugin-configs.lualine")
+require("plugin-configs.trouble")
 
 -- Set current colorscheme to onedark
 vim.cmd("colorscheme onedark")
