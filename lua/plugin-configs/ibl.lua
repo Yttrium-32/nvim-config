@@ -1,6 +1,7 @@
 -- Indent guide config
 -- Needs termguicolors to work
 vim.opt.termguicolors = true
+
 local highlight = "RainbowViolet"
 
 local hooks = require "ibl.hooks"

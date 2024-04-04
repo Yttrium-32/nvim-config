@@ -35,18 +35,31 @@ vim.opt.clipboard:append("unnamedplus")
 vim.opt.list = true
 
 -- Expand tab
-vim.opt.expandtab = true
 vim.opt.tabstop = 4
+vim.opt.softtabstop = 4
 vim.opt.shiftwidth = 4
+vim.opt.expandtab = true
+
+-- Disable line wrap
+vim.opt.wrap = false
 
 vim.opt.autoindent = true
 vim.opt.smartindent = true
+
+-- Enable long term undo's
+vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
+vim.opt.undofile = true
+
+vim.opt.incsearch = true
 
 -- Display signs in number column
 vim.opt.signcolumn = 'number'
 
 -- highlight column 80
 vim.opt.colorcolumn = '80'
+
+-- Fast update time
+vim.opt.updatetime = 50
 
 -- Set current colorscheme to onedark
 vim.cmd("colorscheme onedark")
