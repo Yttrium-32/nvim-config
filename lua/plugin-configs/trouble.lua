@@ -2,7 +2,13 @@
 require('trouble').setup {
   opts = {
     icons = true,
-    use_diagnostic_signs = true
+    height = 5,
+    signs = {
+        error = " ",
+        warn = " ",
+        hint = "",
+        info = " "
+    },
   }
 }
 
