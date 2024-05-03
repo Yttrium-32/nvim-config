@@ -10,6 +10,9 @@ return require('packer').startup(function(use)
         requires = { {'nvim-lua/plenary.nvim'} }
     }
 
+    -- Surround text with stuff
+    use 'tpope/vim-surround'
+
     -- One dark color scheme
     use 'joshdick/onedark.vim'
 
