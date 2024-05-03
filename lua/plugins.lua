@@ -85,6 +85,10 @@ return require('packer').startup(function(use)
         'folke/trouble.nvim',
         requires = 'nvim-tree/nvim-web-devicons'
     }
+
+    -- For better git integration
+    use 'lewis6991/gitsigns.nvim'
+
     -- Cscope provides an easy way to navigate a large C project
     -- This plugin add keybinds and options for Cscope in nvim
     -- This was originally supported out of the box in vim but was dropped for

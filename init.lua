@@ -22,6 +22,7 @@ require("plugin-configs.lualine")
 require("plugin-configs.trouble")
 require("plugin-configs.cscope_maps")
 require("plugin-configs.fidget")
+require("plugin-configs.gitsigns")
 
 ----> Random other configuration <----
 -- set maximum amount of colums for synatax higlighting
