@@ -3,7 +3,7 @@ require("fidget").setup({
         window = {
             winblend = 0,
             relative = "editor",
-            align = "top"
+            align = "bottom"
         }
     }
 })
