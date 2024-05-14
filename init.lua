@@ -20,7 +20,6 @@ require("plugin-configs.ibl")
 require("plugin-configs.bufferline")
 require("plugin-configs.lualine")
 require("plugin-configs.trouble")
-require("plugin-configs.cscope_maps")
 require("plugin-configs.fidget")
 require("plugin-configs.gitsigns")
 
