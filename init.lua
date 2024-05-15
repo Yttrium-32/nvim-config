@@ -7,21 +7,21 @@
 
 ----> Imports from other files <----
 -- Plugin Manager
-require("plugins")
+require('plugins')
 
 -- Various keybinds
-require("keybinds")
+require('keybinds')
 
 -- Configuration for various plugins
-require("plugin-configs.treesitter")
-require("plugin-configs.lsp")
-require("plugin-configs.neo-tree")
-require("plugin-configs.ibl")
-require("plugin-configs.bufferline")
-require("plugin-configs.lualine")
-require("plugin-configs.trouble")
-require("plugin-configs.fidget")
-require("plugin-configs.gitsigns")
+require('plugin-configs.treesitter')
+require('plugin-configs.lsp')
+require('plugin-configs.neo-tree')
+require('plugin-configs.ibl')
+require('plugin-configs.bufferline')
+require('plugin-configs.lualine')
+require('plugin-configs.trouble')
+require('plugin-configs.fidget')
+require('plugin-configs.gitsigns')
 
 ----> Random other configuration <----
 -- set maximum amount of colums for synatax higlighting
@@ -32,7 +32,7 @@ vim.opt.number = true
 vim.opt.relativenumber = true
 
 -- Enable system clipboard
-vim.opt.clipboard:append("unnamedplus")
+vim.opt.clipboard:append('unnamedplus')
 
 vim.opt.list = true
 
@@ -49,7 +49,7 @@ vim.opt.autoindent = true
 vim.opt.smartindent = true
 
 -- Enable long term undo's
-vim.opt.undodir = os.getenv("HOME") .. "/.local/share/undodir"
+vim.opt.undodir = os.getenv('HOME') .. '/.local/share/undodir'
 vim.opt.undofile = true
 
 vim.opt.incsearch = true
@@ -64,11 +64,11 @@ vim.opt.colorcolumn = '80'
 vim.opt.updatetime = 50
 
 -- Set current colorscheme to onedark
-vim.cmd("colorscheme onedark")
+vim.cmd('colorscheme onedark')
 
 -- Make the background transparent
-vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
-vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
+vim.api.nvim_set_hl(0, 'Normal', { bg = 'none' })
+vim.api.nvim_set_hl(0, 'NormalFloat', { bg = 'none' })
 
 -- Disable continuation of comments to the next line
 vim.cmd 'au FileType * set fo-=c fo-=r fo-=o'
