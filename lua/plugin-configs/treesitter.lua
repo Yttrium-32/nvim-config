@@ -19,7 +19,7 @@ require'nvim-treesitter.configs'.setup {
     auto_install = true,
 
     -- List of parsers to ignore installing (or "all")
-    ignore_install = { "rst", "md" },
+    ignore_install = { "rst", "md", "html" },
 
 
     highlight = {
