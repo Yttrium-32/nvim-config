@@ -14,7 +14,7 @@ return require('packer').startup(function(use)
     use 'tpope/vim-surround'
 
     -- One dark color scheme
-    use 'joshdick/onedark.vim'
+    use 'olimorris/onedarkpro.nvim'
 
     -- Treesitter for highlights
     use {

@@ -65,6 +65,7 @@ vim.opt.updatetime = 50
 
 -- Set current colorscheme to onedark
 vim.cmd('colorscheme onedark')
+vim.cmd('colorscheme onedark') -- Settings this twice is the only way to get bufferline to behave
 
 -- Make the background transparent
 vim.api.nvim_set_hl(0, 'Normal', { bg = 'none' })
