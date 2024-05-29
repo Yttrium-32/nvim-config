@@ -121,3 +121,14 @@ vim.diagnostic.config({
 	},
 })
 
+require('lspconfig').pyright.setup({
+    settings = {
+        python = {
+            analysis = {
+                typeCheckingMode = 'off',
+                extraPaths = '..'
+            }
+        }
+    }
+})
+
