@@ -1,52 +1,52 @@
 local has_words_before = function()
   unpack = unpack or table.unpack
   local line, col = unpack(vim.api.nvim_win_get_cursor(0))
-  return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
+  return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match('%s') == nil
 end
 
 local signs = {
-    { name = 'DiagnosticSignError', text = " " },
-    { name = 'DiagnosticSignWarn', text = " " },
-    { name = 'DiagnosticSignHint', text = "" },
-    { name = 'DiagnosticSignInfo', text = " " },
+    { name = 'DiagnosticSignError', text = ' ' },
+    { name = 'DiagnosticSignWarn', text = ' ' },
+    { name = 'DiagnosticSignHint', text = '' },
+    { name = 'DiagnosticSignInfo', text = ' ' },
 }
 for _, sign in ipairs(signs) do
   vim.fn.sign_define(sign.name, { texthl = sign.name, text = sign.text, numhl = '' })
 end
 
 local cmp = require('cmp')
-local cmp_lsp = require("cmp_nvim_lsp")
-local luasnip = require("luasnip")
+local cmp_lsp = require('cmp_nvim_lsp')
+local luasnip = require('luasnip')
 
 local capabilities = vim.tbl_deep_extend(
-"force",
+'force',
 {},
 vim.lsp.protocol.make_client_capabilities(),
 cmp_lsp.default_capabilities())
 
-require("mason").setup()
-require("mason-lspconfig").setup({
+require('mason').setup()
+require('mason-lspconfig').setup({
 	ensure_installed = {
-		"lua_ls",
-		"tsserver",
-        "pyright"
+		'lua_ls',
+		'tsserver',
+        'pyright'
 	},
 	handlers = {
 		function(server_name) -- default handler (optional)
 
-			require("lspconfig")[server_name].setup {
+			require('lspconfig')[server_name].setup {
 				capabilities = capabilities
 			}
 		end,
 
-		["lua_ls"] = function()
-			local lspconfig = require("lspconfig")
+		['lua_ls'] = function()
+			local lspconfig = require('lspconfig')
 			lspconfig.lua_ls.setup {
 				capabilities = capabilities,
 				settings = {
 					Lua = {
 						diagnostics = {
-							globals = { "vim" },
+							globals = { 'vim' },
 						}
 					}
 				}
@@ -68,10 +68,10 @@ cmp.setup({
 
 	mapping = cmp.mapping.preset.insert({
 		-- Autocompletion using tab
-		["<Tab>"] = cmp.mapping(function(fallback)
+		['<Tab>'] = cmp.mapping(function(fallback)
 			if cmp.visible() then
 				cmp.select_next_item()
-				-- You could replace the expand_or_jumpable() calls with expand_or_locally_jumpable() 
+				-- You could replace the expand_or_jumpable() calls with expand_or_locally_jumpable()
 				-- that way you will only jump inside the snippet region
 			elseif luasnip.expand_or_jumpable() then
 				luasnip.expand_or_jump()
@@ -80,9 +80,9 @@ cmp.setup({
 			else
 				fallback()
 			end
-		end, { "i", "s" }),
+		end, { 'i', 's' }),
 
-		["<S-Tab>"] = cmp.mapping(function(fallback)
+		['<S-Tab>'] = cmp.mapping(function(fallback)
 			if cmp.visible() then
 				cmp.select_prev_item()
 			elseif luasnip.jumpable(-1) then
@@ -90,7 +90,7 @@ cmp.setup({
 			else
 				fallback()
 			end
-		end, { "i", "s" }),
+		end, { 'i', 's' }),
 
 		['<C-b>'] = cmp.mapping.scroll_docs(-4),
 		['<C-f>'] = cmp.mapping.scroll_docs(4),
@@ -113,11 +113,11 @@ vim.diagnostic.config({
 	-- update_in_insert = true,
 	float = {
 		focusable = true,
-		style = "minimal",
-		border = "rounded",
-		source = "always",
-		header = "",
-		prefix = "",
+		style = 'minimal',
+		border = 'rounded',
+		source = 'always',
+		header = '',
+		prefix = '',
 	},
 })
 
