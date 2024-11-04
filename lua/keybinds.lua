@@ -2,7 +2,6 @@
 local augroup = vim.api.nvim_create_augroup
 local LspBindGroup = augroup('LspBindGroup', {})
 local autocmd = vim.api.nvim_create_autocmd
-local builtin = require('telescope.builtin')
 local keymap = vim.keymap.set
 
 -- Bind leader key to spacebar and local leader o \\
@@ -19,13 +18,6 @@ keymap('n', '<Leader>O', 'O<Esc>j', {})
 
 -- Open filetree with F2
 keymap("n", "<F2>", ':Neotree toggle right reveal<CR>', {silent=true})
-
--- Telescope keybinds
-keymap('n', '<leader>pf', builtin.find_files, {})
-keymap('n', '<C-p>', builtin.git_files, {})
-keymap('n', '<leader>ps', function()
-	builtin.grep_string({ search = vim.fn.input("Grep > ") })
-end)
 
 -- Navigation of bufferline
 keymap('n', '<S-w>l', ':BufferLineCycleNext<CR>', {noremap=true})
