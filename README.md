@@ -13,3 +13,6 @@
 
 Then in nvim run `:PackerInstall` to install all plugins and then relaunch nvim.
 
+- You can also easily install some required packages by running (Please first review these by checking the Makefile):
+`make`
+
