@@ -5,8 +5,9 @@ local autocmd = vim.api.nvim_create_autocmd
 local builtin = require('telescope.builtin')
 local keymap = vim.keymap.set
 
--- Bind leader key to spacebar
+-- Bind leader key to spacebar and local leader o \\
 vim.g.mapleader = " "
+vim.g.maplocalleader = "\\"
 
 -- Move line up and down in normal mode using Alt + j/k
 keymap('n', '<A-k>', ':m .-2<CR>==', {silent=true})
