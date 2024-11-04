@@ -46,11 +46,10 @@ autocmd('LspAttach', {
 })
 
 -- trouble.nvim default keybinds
-local trouble = require("trouble")
-vim.keymap.set("n", "<leader>xx", function() trouble.toggle() end)
-vim.keymap.set("n", "<leader>xw", function() trouble.toggle("workspace_diagnostics") end)
-vim.keymap.set("n", "<leader>xd", function() trouble.toggle("document_diagnostics") end)
-vim.keymap.set("n", "<leader>xq", function() trouble.toggle("quickfix") end)
-vim.keymap.set("n", "<leader>xl", function() trouble.toggle("loclist") end)
-vim.keymap.set("n", "gR", function() trouble.toggle("lsp_references") end)
+vim.keymap.set("n", "<leader>xx", ":Trouble diagnostics toggle<CR>")
+vim.keymap.set("n", "<leader>xX", ":Trouble diagnostics toggle filter.buf=0<CR>")
+vim.keymap.set("n", "<leader>cs", ":Trouble symbols toggle focus=false<CR>")
+vim.keymap.set("n", "<leader>cl", ":Trouble lsp toggle focus=false win.position=right<CR>")
+vim.keymap.set("n", "<leader>xl", ":Trouble loclist toggle<cr>")
+vim.keymap.set("n", "<leader>xq", ":Trouble qflist toggle<CR>")
 
