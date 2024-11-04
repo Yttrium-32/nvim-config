@@ -63,10 +63,6 @@ vim.opt.colorcolumn = '80'
 -- Fast update time
 vim.opt.updatetime = 50
 
--- Set current colorscheme to onedark
-vim.cmd('colorscheme onedark')
-vim.cmd('colorscheme onedark') -- Settings this twice is the only way to get bufferline to behave
-
 -- Make the background transparent
 vim.api.nvim_set_hl(0, 'Normal', { bg = 'none' })
 vim.api.nvim_set_hl(0, 'NormalFloat', { bg = 'none' })
@@ -74,7 +70,7 @@ vim.api.nvim_set_hl(0, 'NormalFloat', { bg = 'none' })
 -- Disable continuation of comments to the next line
 vim.cmd 'au FileType * set fo-=c fo-=r fo-=o'
 
- -- Set filetype dosini to .conf file to treesitter highlight
+-- Set filetype dosini to .conf file to treesitter highlight
 vim.cmd 'au BufNewFile,BufRead *.conf setf dosini'
 
 -- Disable winbar for nofile buffers
