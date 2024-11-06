@@ -1,7 +1,7 @@
 # Config file for neovim
 
 ## Requirements
-- Install [packer.nvim](https://github.com/wbthomason/packer.nvim#quickstart) for your OS.
+- Opening the editor should automatically bootstrap [lazy.nvim](https://lazy.folke.io/) for your OS.
 - Install a [Nerd Font](https://www.nerdfonts.com/).
 
 ## Installation
