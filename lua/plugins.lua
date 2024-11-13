@@ -34,16 +34,15 @@ require("lazy").setup({
         -- Treesitter for highlights
         {
             'nvim-treesitter/nvim-treesitter',
-            config = function()
-                local ts_update = require('nvim-treesitter.install').update({ with_sync = true })
-                ts_update()
+            build = function()
+                require('nvim-treesitter.install').update({ with_sync = true })
             end,
         },
 
         -- Tree view for undo
         { 'mbbill/undotree' },
 
-        -- all plugins for lsp configuration
+        -- Various plugins for lsp configuration
         {
             'neovim/nvim-lspconfig',
             dependencies = {
@@ -60,7 +59,10 @@ require("lazy").setup({
         },
 
         -- Notification library for various things
-        { 'j-hui/fidget.nvim' },
+        {
+            'j-hui/fidget.nvim',
+            tags = "v1.4.5"
+        },
 
         -- Auto pair some symbols
         { 'jiangmiao/auto-pairs' },
@@ -85,6 +87,7 @@ require("lazy").setup({
         -- Buffer line
         {
             'akinsho/bufferline.nvim',
+            version = "*",
             dependencies = 'nvim-tree/nvim-web-devicons'
         },
 
@@ -92,12 +95,18 @@ require("lazy").setup({
         { 'preservim/nerdcommenter' },
 
         -- Indentation guide for all line
-        { 'lukas-reineke/indent-blankline.nvim' },
+        {
+            'lukas-reineke/indent-blankline.nvim',
+            main = 'ibl',
+            --@module = 'ibl'
+            --@type = ibl.config
+        },
 
         -- Prettier diagnostics
         {
-            'folke/trouble.nvim',
-            dependencies = 'nvim-tree/nvim-web-devicons'
+            "folke/trouble.nvim",
+            opts = {}, -- for default options
+            cmd = "Trouble",
         },
 
         -- For better git integration
