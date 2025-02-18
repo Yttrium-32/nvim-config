@@ -26,98 +26,99 @@ cmp_lsp.default_capabilities())
 
 require('mason').setup()
 require('mason-lspconfig').setup({
-	ensure_installed = {
-		'lua_ls',
+    ensure_installed = {
+        'lua_ls',
         'pyright'
-	},
-	handlers = {
-		function(server_name) -- default handler (optional)
+    },
+    handlers = {
+        function(server_name) -- default handler (optional)
 
-			require('lspconfig')[server_name].setup {
-				capabilities = capabilities
-			}
-		end,
+            require('lspconfig')[server_name].setup {
+                capabilities = capabilities
+            }
+        end,
 
-		['lua_ls'] = function()
-			local lspconfig = require('lspconfig')
-			lspconfig.lua_ls.setup {
-				capabilities = capabilities,
-				settings = {
-					Lua = {
-						diagnostics = {
-							globals = { 'vim' },
-						}
-					}
-				}
-			}
-		end,
-	}
+        ['lua_ls'] = function()
+            local lspconfig = require('lspconfig')
+            lspconfig.lua_ls.setup {
+                capabilities = capabilities,
+                settings = {
+                    Lua = {
+                        diagnostics = {
+                            globals = { 'vim' },
+                        }
+                    }
+                }
+            }
+        end,
+
+    }
 })
 
 -- If you want insert `(` after select function or method item
 
 cmp.setup({
-	snippet = {
-		expand = function(args)
-			require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
-		end,
-	},
-	-- autocomplete to first option on enter
-	cmp.mapping.confirm({ select = true }),
+    snippet = {
+        expand = function(args)
+            require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
+        end,
+    },
+    -- autocomplete to first option on enter
+    cmp.mapping.confirm({ select = true }),
 
-	mapping = cmp.mapping.preset.insert({
-		-- Autocompletion using tab
-		['<Tab>'] = cmp.mapping(function(fallback)
-			if cmp.visible() then
-				cmp.select_next_item()
-				-- You could replace the expand_or_jumpable() calls with expand_or_locally_jumpable()
-				-- that way you will only jump inside the snippet region
-			elseif luasnip.expand_or_jumpable() then
-				luasnip.expand_or_jump()
-			elseif has_words_before() then
-				cmp.complete()
-			else
-				fallback()
-			end
-		end, { 'i', 's' }),
+    mapping = cmp.mapping.preset.insert({
+        -- Autocompletion using tab
+        ['<Tab>'] = cmp.mapping(function(fallback)
+            if cmp.visible() then
+                cmp.select_next_item()
+                -- You could replace the expand_or_jumpable() calls with expand_or_locally_jumpable()
+                -- that way you will only jump inside the snippet region
+            elseif luasnip.expand_or_jumpable() then
+                luasnip.expand_or_jump()
+            elseif has_words_before() then
+                cmp.complete()
+            else
+                fallback()
+            end
+        end, { 'i', 's' }),
 
-		['<S-Tab>'] = cmp.mapping(function(fallback)
-			if cmp.visible() then
-				cmp.select_prev_item()
-			elseif luasnip.jumpable(-1) then
-				luasnip.jump(-1)
-			else
-				fallback()
-			end
-		end, { 'i', 's' }),
+        ['<S-Tab>'] = cmp.mapping(function(fallback)
+            if cmp.visible() then
+                cmp.select_prev_item()
+            elseif luasnip.jumpable(-1) then
+                luasnip.jump(-1)
+            else
+                fallback()
+            end
+        end, { 'i', 's' }),
 
-		['<C-b>'] = cmp.mapping.scroll_docs(-4),
-		['<C-f>'] = cmp.mapping.scroll_docs(4),
-		['<CR>'] = cmp.mapping.confirm({ select = true, behavior = cmp.ConfirmBehavior.Insert }),
-	}),
+        ['<C-b>'] = cmp.mapping.scroll_docs(-4),
+        ['<C-f>'] = cmp.mapping.scroll_docs(4),
+        ['<CR>'] = cmp.mapping.confirm({ select = true, behavior = cmp.ConfirmBehavior.Insert }),
+    }),
 
-	sources = cmp.config.sources({
-		{ name = 'nvim_lsp' },
-		{ name = 'luasnip' }, -- For luasnip users.
-	}, {
-		{ name = 'buffer' },
-		{ name = 'path' },
-	})
+    sources = cmp.config.sources({
+        { name = 'nvim_lsp' },
+        { name = 'luasnip' }, -- For luasnip users.
+    }, {
+        { name = 'buffer' },
+        { name = 'path' },
+    })
 })
 
 vim.diagnostic.config({
     signs = {
         active = signs
     },
-	-- update_in_insert = true,
-	float = {
-		focusable = true,
-		style = 'minimal',
-		border = 'rounded',
-		source = 'always',
-		header = '',
-		prefix = '',
-	},
+    -- update_in_insert = true,
+    float = {
+        focusable = true,
+        style = 'minimal',
+        border = 'rounded',
+        source = 'always',
+        header = '',
+        prefix = '',
+    },
 })
 
 require('lspconfig').pyright.setup({
