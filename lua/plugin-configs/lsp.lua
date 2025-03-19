@@ -55,8 +55,10 @@ require('mason-lspconfig').setup({
     }
 })
 
--- If you want insert `(` after select function or method item
+-- Add snippets
+require("luasnip.loaders.from_vscode").lazy_load()
 
+-- If you want insert `(` after select function or method item
 cmp.setup({
     snippet = {
         expand = function(args)
