@@ -53,7 +53,7 @@ vim.opt.wrap = false
 vim.opt.autoindent = true
 vim.opt.smartindent = true
 
--- Enable long term undo's
+-- Enable long term undos
 vim.opt.undodir = os.getenv('HOME') .. '/.local/share/undodir'
 vim.opt.undofile = true
 
@@ -84,4 +84,6 @@ vim.cmd 'au VimEnter,BufWinEnter * if &filetype == "neo-tree" | setlocal winbar=
 -- Kernel specific configuration
 local kernel_au = 'au BufNewFile,BufRead ' .. os.getenv('HOME') .. '/dev/linux_work/ set cc=81 noet ts=8'
 vim.cmd(kernel_au)
+
+vim.diagnostic.config( { virtual_lines = { current_line = true } } )
 
