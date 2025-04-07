@@ -23,6 +23,11 @@ require('plugin-configs.trouble')
 require('plugin-configs.fidget')
 require('plugin-configs.gitsigns')
 
+-- Custom format command
+vim.api.nvim_create_user_command('Format', function ()
+    vim.lsp.buf.format()
+end, { desc = 'Run formater if one exists' })
+
 ----> Random other configuration <----
 -- set maximum amount of colums for synatax higlighting
 vim.bo.synmaxcol = 300

@@ -58,6 +58,20 @@ require("lazy").setup({
             }
         },
 
+        -- Code snippets
+        {
+            "L3MON4D3/LuaSnip",
+            -- follow latest release.
+            version = "v2.*",
+            -- install jsregexp (optional!).
+            build = "make install_jsregexp"
+        },
+
+        -- Code snippet source
+        {
+             'rafamadriz/friendly-snippets'
+        },
+
         -- Notification library for various things
         {
             'j-hui/fidget.nvim',
