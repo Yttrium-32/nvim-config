@@ -66,6 +66,11 @@ require("luasnip.loaders.from_vscode").lazy_load()
 
 -- If you want insert `(` after select function or method item
 cmp.setup({
+    window = {
+        completion = cmp.config.window.bordered(),
+        documentation = cmp.config.window.bordered(),
+    },
+
     snippet = {
         expand = function(args)
             require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
