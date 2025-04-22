@@ -64,12 +64,9 @@ require("lazy").setup({
             -- follow latest release.
             version = "v2.*",
             -- install jsregexp (optional!).
-            build = "make install_jsregexp"
-        },
-
-        -- Code snippet source
-        {
-             'rafamadriz/friendly-snippets'
+            build = "make install_jsregexp",
+            -- Code snippet source
+            dependencies = { 'rafamadriz/friendly-snippets' }
         },
 
         -- Notification library for various things
