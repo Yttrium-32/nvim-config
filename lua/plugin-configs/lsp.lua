@@ -25,10 +25,11 @@ local cmp_lsp = require('cmp_nvim_lsp')
 local luasnip = require('luasnip')
 
 local capabilities = vim.tbl_deep_extend(
-'force',
-{},
-vim.lsp.protocol.make_client_capabilities(),
-cmp_lsp.default_capabilities())
+    'force',
+    {},
+    vim.lsp.protocol.make_client_capabilities(),
+    cmp_lsp.default_capabilities()
+)
 
 require('mason').setup()
 require('mason-lspconfig').setup({
@@ -36,17 +37,16 @@ require('mason-lspconfig').setup({
         'lua_ls',
         'pyright'
     },
+
     handlers = {
         function(server_name) -- default handler (optional)
-
             require('lspconfig')[server_name].setup {
                 capabilities = capabilities
             }
         end,
 
         ['lua_ls'] = function()
-            local lspconfig = require('lspconfig')
-            lspconfig.lua_ls.setup {
+            require('lspconfig').lua_ls.setup {
                 capabilities = capabilities,
                 settings = {
                     Lua = {
@@ -58,13 +58,34 @@ require('mason-lspconfig').setup({
             }
         end,
 
+        ['clangd'] = function ()
+            require('lspconfig').clangd.setup {
+                capabilities = capabilities,
+                cmd = { "/usr/bin/clangd" }
+            }
+        end,
+
+        ['pyright'] = function ()
+            require('lspconfig').pyright.setup {
+                capabilities = capabilities,
+                settings = {
+                    python = {
+                        analysis = {
+                            typeCheckingMode = 'off',
+                            extraPaths = '..'
+                        }
+                    }
+                }
+            }
+        end
+
     }
 })
 
 -- Add snippets
 require("luasnip.loaders.from_vscode").lazy_load()
 
--- If you want insert `(` after select function or method item
+-- If you want to insert `(` after select function or method item
 cmp.setup({
     window = {
         completion = cmp.config.window.bordered(),
@@ -118,34 +139,4 @@ cmp.setup({
         { name = 'path' },
     })
 })
-
-vim.diagnostic.config({
-    signs = {
-        active = signs
-    },
-    -- update_in_insert = true,
-    float = {
-        focusable = true,
-        style = 'minimal',
-        border = 'rounded',
-        source = 'always',
-        header = '',
-        prefix = '',
-    },
-})
-
-require('lspconfig').pyright.setup({
-    settings = {
-        python = {
-            analysis = {
-                typeCheckingMode = 'off',
-                extraPaths = '..'
-            }
-        }
-    }
-})
-
-require('lspconfig').clangd.setup {
-    cmd = { "/usr/bin/clangd" }
-}
 
