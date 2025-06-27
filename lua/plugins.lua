@@ -16,7 +16,7 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 -- Setup lazy.nvim
-require("lazy").setup({
+require("lazy").setup {
     spec = {
         -- One dark color scheme
         {
@@ -131,4 +131,7 @@ require("lazy").setup({
     install = { colorscheme = { "onedark" } },
     -- automatically check for plugin updates
     checker = { enabled = true },
-})
+    ui = {
+        border = 'single',
+    }
+}
