@@ -58,8 +58,8 @@ autocmd('LspAttach', {
 })
 
 -- trouble.nvim default keybinds
-vim.keymap.set("n", "<leader>xx", ":Trouble diagnostics toggle<CR>")
-vim.keymap.set("n", "<leader>xX", ":Trouble diagnostics toggle filter.buf=0<CR>")
+vim.keymap.set("n", "<leader>xx", ":Trouble diagnostics toggle focus=true<CR>", {silent=true})
+vim.keymap.set("n", "<leader>xX", ":Trouble diagnostics toggle filter.buf=0 focus=true<CR>", {silent=true})
 vim.keymap.set("n", "<leader>cs", ":Trouble symbols toggle focus=false<CR>")
 vim.keymap.set("n", "<leader>cl", ":Trouble lsp toggle focus=false win.position=right<CR>")
 vim.keymap.set("n", "<leader>xl", ":Trouble loclist toggle<cr>")
