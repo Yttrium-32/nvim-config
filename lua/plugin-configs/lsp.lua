@@ -24,62 +24,49 @@ local cmp = require('cmp')
 local cmp_lsp = require('cmp_nvim_lsp')
 local luasnip = require('luasnip')
 
-local capabilities = vim.tbl_deep_extend(
-    'force',
-    {},
-    vim.lsp.protocol.make_client_capabilities(),
-    cmp_lsp.default_capabilities()
-)
+vim.lsp.config('lua_ls', {
+    settings = {
+        Lua = {
+            runtime = {
+                version = 'LuaJIT'
+            },
+            diagnostics = {
+                globals = { 'vim', 'require' },
+            }
+        }
+    }
+})
 
-require('mason').setup()
+vim.lsp.config('clangd', {
+    cmd = { 'clangd', '--background-index', '--threads=8' },
+})
+
+vim.lsp.config('pyright', {
+    settings = {
+        python = {
+            analysis = {
+                typeCheckingMode = 'off',
+                extraPaths = '..'
+            }
+        }
+    }
+
+})
+
+require('mason').setup {
+    opts = {
+        ui = {
+            border = 'single'
+        }
+    }
+}
+
 require('mason-lspconfig').setup({
     ensure_installed = {
         'lua_ls',
-        'pyright'
+        'pyright',
+        'clangd'
     },
-
-    handlers = {
-        function(server_name) -- default handler (optional)
-            require('lspconfig')[server_name].setup {
-                capabilities = capabilities
-            }
-        end,
-
-        ['lua_ls'] = function()
-            require('lspconfig').lua_ls.setup {
-                capabilities = capabilities,
-                settings = {
-                    Lua = {
-                        diagnostics = {
-                            globals = { 'vim' },
-                        }
-                    }
-                }
-            }
-        end,
-
-        ['clangd'] = function ()
-            require('lspconfig').clangd.setup {
-                capabilities = capabilities,
-                cmd = { "/usr/bin/clangd" }
-            }
-        end,
-
-        ['pyright'] = function ()
-            require('lspconfig').pyright.setup {
-                capabilities = capabilities,
-                settings = {
-                    python = {
-                        analysis = {
-                            typeCheckingMode = 'off',
-                            extraPaths = '..'
-                        }
-                    }
-                }
-            }
-        end
-
-    }
 })
 
 -- Add snippets
