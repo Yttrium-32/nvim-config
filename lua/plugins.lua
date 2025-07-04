@@ -124,7 +124,11 @@ require("lazy").setup {
         { 'lewis6991/gitsigns.nvim' },
 
         -- Better rust experience
-        { 'mrcjkb/rustaceanvim' },
+        {
+            'mrcjkb/rustaceanvim',
+            version = '^6',
+            lazy = false
+        },
     },
     -- Configure any other settings here. See the documentation for more details.
     -- colorscheme that will be used when installing plugins.
