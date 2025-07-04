@@ -37,8 +37,15 @@ vim.lsp.config('lua_ls', {
     }
 })
 
+local nproc = string.gsub(vim.fn.system('nproc'), "\n", "")
 vim.lsp.config('clangd', {
-    cmd = { 'clangd', '--background-index', '--threads=8' },
+    cmd = {
+        "clangd",
+        "--header-insertion=never",
+        "-j", nproc,
+        "--background-index",
+    },
+    filetypes = {"c", "cpp", "objc", "objcpp"},
 })
 
 vim.lsp.config('pyright', {
@@ -70,7 +77,7 @@ require('mason-lspconfig').setup({
 })
 
 -- Add snippets
-require("luasnip.loaders.from_vscode").lazy_load()
+require('luasnip.loaders.from_vscode').lazy_load()
 
 -- If you want to insert `(` after select function or method item
 cmp.setup({
