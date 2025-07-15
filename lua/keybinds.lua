@@ -33,6 +33,7 @@ autocmd('LspAttach', {
     callback = function(e)
         local opts = { buffer = e.buf }
         keymap("n", "gd", function() vim.lsp.buf.definition() end, opts)
+        keymap("n", "gi", function() vim.lsp.buf.implementation() end, opts)
         keymap("n", "K", function() vim.lsp.buf.hover({
             border = _Border
         }) end, opts)
