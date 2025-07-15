@@ -82,7 +82,7 @@ vim.cmd 'au BufNewFile,BufRead *.conf setf dosini'
 -- Disable winbar for nofile buffers
 vim.cmd 'au VimEnter,BufWinEnter * if &filetype == "neo-tree" | setlocal winbar=%f | endif'
 
--- Kernel specific configuration
+-- Linux Kernel dev specific configuration
 local kernel_au = 'au BufNewFile,BufRead ' .. os.getenv('HOME') .. '/dev/linux_work/ set cc=81 noet ts=8'
 vim.cmd(kernel_au)
 
