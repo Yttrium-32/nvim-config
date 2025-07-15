@@ -9,7 +9,7 @@
 -- Plugin Manager
 require('plugins')
 
--- Various keybinds
+-- Various key binds
 require('keybinds')
 
 -- Configuration for various plugins
@@ -29,7 +29,7 @@ vim.api.nvim_create_user_command('Format', function ()
 end, { desc = 'Run formater if one exists' })
 
 ----> Random other configuration <----
--- set maximum amount of colums for synatax higlighting
+-- set maximum amount of columns for syntax highlighting
 vim.bo.synmaxcol = 300
 
 vim.opt.scrolloff = 7
@@ -68,6 +68,9 @@ vim.opt.colorcolumn = '80'
 -- Fast update time
 vim.opt.updatetime = 50
 
+-- Enable spell check
+vim.opt.spell = true
+
 -- Make the background transparent
 vim.api.nvim_set_hl(0, 'Normal', { bg = 'none' })
 vim.api.nvim_set_hl(0, 'NormalFloat', { bg = 'none' })
@@ -76,7 +79,7 @@ vim.api.nvim_set_hl(0, 'FloatBorder', { bg = 'none' })
 -- Disable continuation of comments to the next line
 vim.cmd 'au FileType * set fo-=c fo-=r fo-=o'
 
--- Set filetype dosini to .conf file to treesitter highlight
+-- Set file type dosini to .conf file to treesitter highlight
 vim.cmd 'au BufNewFile,BufRead *.conf setf dosini'
 
 -- Disable winbar for nofile buffers

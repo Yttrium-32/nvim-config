@@ -27,7 +27,7 @@ keymap('n', '<S-w>f', ':BufferLinePick<CR>', {noremap=true})
 -- Open undotree
 keymap('n', '<leader>u', vim.cmd.UndotreeToggle)
 
--- LSP specific keybinds
+-- LSP specific key binds
 autocmd('LspAttach', {
     group = LspBindGroup,
     callback = function(e)
@@ -58,7 +58,7 @@ autocmd('LspAttach', {
     end
 })
 
--- trouble.nvim default keybinds
+-- trouble.nvim default key binds
 vim.keymap.set("n", "<leader>xx", ":Trouble diagnostics toggle focus=true<CR>", {silent=true})
 vim.keymap.set("n", "<leader>xX", ":Trouble diagnostics toggle filter.buf=0 focus=true<CR>", {silent=true})
 vim.keymap.set("n", "<leader>cs", ":Trouble symbols toggle focus=false<CR>")
@@ -66,7 +66,7 @@ vim.keymap.set("n", "<leader>cl", ":Trouble lsp toggle focus=false win.position=
 vim.keymap.set("n", "<leader>xl", ":Trouble loclist toggle<cr>")
 vim.keymap.set("n", "<leader>xq", ":Trouble qflist toggle<CR>")
 
--- Suggested keybinds for gitsigns
+-- Suggested key binds for gitsigns
 local gitsigns = require('gitsigns')
 -- Navigation
 local nxt_hck_key = ']h'

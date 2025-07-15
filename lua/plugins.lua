@@ -42,7 +42,7 @@ require("lazy").setup {
         -- Tree view for undo
         { 'mbbill/undotree' },
 
-        -- Various plugins for lsp configuration
+        -- Various plugins for LSP configuration
         {
             'neovim/nvim-lspconfig',
             dependencies = {
@@ -131,7 +131,7 @@ require("lazy").setup {
         },
     },
     -- Configure any other settings here. See the documentation for more details.
-    -- colorscheme that will be used when installing plugins.
+    -- color scheme that will be used when installing plugins.
     install = { colorscheme = { "onedark" } },
     -- automatically check for plugin updates
     checker = { enabled = true },
