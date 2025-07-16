@@ -53,7 +53,7 @@ vim.opt.wrap = false
 vim.opt.autoindent = true
 vim.opt.smartindent = true
 
--- Enable long term undos
+-- Preserve undo after closing file
 vim.opt.undodir = os.getenv('HOME') .. '/.local/share/undodir'
 vim.opt.undofile = true
 
@@ -62,7 +62,7 @@ vim.opt.incsearch = true
 -- Display signs in number column
 vim.opt.signcolumn = 'number'
 
--- highlight column 80
+-- Highlight column 80
 vim.opt.colorcolumn = '80'
 
 -- Fast update time
@@ -71,7 +71,7 @@ vim.opt.updatetime = 50
 -- Enable spell check
 vim.opt.spell = true
 
--- Highlight bad words by underlining them as hints
+-- Highlight misspelled words by underlining them as hints
 vim.api.nvim_set_hl(0, "SpellBad", { link = "DiagnosticUnderlineHint" })
 
 -- Make the background transparent
