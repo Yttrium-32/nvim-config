@@ -71,8 +71,13 @@ vim.opt.updatetime = 50
 -- Enable spell check
 vim.opt.spell = true
 
--- Highlight misspelled words by underlining them as hints
-vim.api.nvim_set_hl(0, "SpellBad", { link = "DiagnosticUnderlineHint" })
+-- Link Spell highlights to diagnostics
+vim.api.nvim_set_hl(0, "SpellBad", { link = "DiagnosticUnderlineInfo" })
+vim.api.nvim_set_hl(0, "SpellCap", { link = "DiagnosticUnderlineHint" })
+
+-- Disable highlights for rare and local spell
+vim.api.nvim_set_hl(0, "SpellRare", { link = "Normal" })
+vim.api.nvim_set_hl(0, "SpellLocal", { link = "Normal" })
 
 -- Make the background transparent
 vim.api.nvim_set_hl(0, 'Normal', { bg = 'none' })
