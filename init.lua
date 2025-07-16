@@ -71,6 +71,9 @@ vim.opt.updatetime = 50
 -- Enable spell check
 vim.opt.spell = true
 
+-- Highlight bad words by underlining them as hints
+vim.api.nvim_set_hl(0, "SpellBad", { link = "DiagnosticUnderlineHint" })
+
 -- Make the background transparent
 vim.api.nvim_set_hl(0, 'Normal', { bg = 'none' })
 vim.api.nvim_set_hl(0, 'NormalFloat', { bg = 'none' })
