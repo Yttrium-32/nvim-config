@@ -15,5 +15,5 @@
 
 ## Installation
 ```bash
-git clone https://gitlab.com/Yttrium_32/nvim-config.git ~/.config/nvim
+git clone https://github.com/Yttrium_32/nvim-config.git ~/.config/nvim
 ```
