@@ -7,8 +7,6 @@
   running `nvim` for the first time
 
 ## Installation
-- Unix and Linux:
-`git clone https://gitlab.com/Yttrium_32/nvim-config.git ~/.config/nvim`
-
-- Windows(Using git-bash):
-`git clone https://gitlab.com/Yttrium_32/nvim-config.git ~/.config/nvim`
+```bash
+git clone https://gitlab.com/Yttrium_32/nvim-config.git ~/.config/nvim
+```
