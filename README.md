@@ -1,9 +1,10 @@
-# Config file for neovim
+# Config file for Neovim
 
 ## Requirements
 - Install a [Nerd Font](https://www.nerdfonts.com/).
 - Ensure a clipboard manager such as `xclip` is installed
-- [lazy.nvim](https://lazy.folke.io/) is automatically bootstrapped when running `nvim` for the first time
+- [lazy.nvim](https://lazy.folke.io/) is automatically bootstrapped when 
+  running `nvim` for the first time
 
 ## Installation
 - Unix and Linux:
