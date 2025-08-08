@@ -42,17 +42,11 @@ require('lazy').setup {
         -- Tree view for undo
         { 'mbbill/undotree' },
 
-        -- Various plugins for LSP configuration
+        -- Plugin for LSP configuration
         {
             'neovim/nvim-lspconfig',
             dependencies = {
                 { 'williamboman/mason-lspconfig.nvim' },
-                { 'hrsh7th/cmp-nvim-lsp' },
-                { 'hrsh7th/cmp-buffer' },
-                { 'hrsh7th/cmp-path' },
-                { 'hrsh7th/cmp-cmdline' },
-                { 'hrsh7th/nvim-cmp' },
-                { 'saadparwaiz1/cmp_luasnip' },
             }
         },
 
@@ -60,6 +54,14 @@ require('lazy').setup {
         {
             'williamboman/mason.nvim',
             opts = {}
+        },
+
+        -- Auto completion engine
+        {
+            'saghen/blink.cmp',
+            dependencies = { 'rafamadriz/friendly-snippets' },
+            version = '1.*',
+            opts_extend = { "sources.default" }
         },
 
         -- Code snippets
