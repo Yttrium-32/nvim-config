@@ -68,7 +68,7 @@ vim.opt.updatetime = 50
 -- Enable spell check
 vim.opt.spell = true
 
-_Border = 'single'
+vim.opt.winborder = 'single'
 
 -- Custom format command
 vim.api.nvim_create_user_command('Format', function()

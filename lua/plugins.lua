@@ -46,7 +46,6 @@ require('lazy').setup {
         {
             'neovim/nvim-lspconfig',
             dependencies = {
-                { 'williamboman/mason.nvim' },
                 { 'williamboman/mason-lspconfig.nvim' },
                 { 'hrsh7th/cmp-nvim-lsp' },
                 { 'hrsh7th/cmp-buffer' },
@@ -55,6 +54,12 @@ require('lazy').setup {
                 { 'hrsh7th/nvim-cmp' },
                 { 'saadparwaiz1/cmp_luasnip' },
             }
+        },
+
+        -- LSP manager
+        {
+            'williamboman/mason.nvim',
+            opts = {}
         },
 
         -- Code snippets

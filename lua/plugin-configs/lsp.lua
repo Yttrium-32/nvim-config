@@ -60,14 +60,6 @@ vim.lsp.config('pyright', {
 
 })
 
-require('mason').setup {
-    opts = {
-        ui = {
-            border = 'single'
-        }
-    }
-}
-
 require('mason-lspconfig').setup({
     ensure_installed = {
         'lua_ls',
