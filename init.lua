@@ -80,11 +80,6 @@ vim.api.nvim_set_hl(0, "SpellCap", { link = "DiagnosticUnderlineHint" })
 vim.api.nvim_set_hl(0, "SpellRare", { link = "Normal" })
 vim.api.nvim_set_hl(0, "SpellLocal", { link = "Normal" })
 
--- Make the background transparent
-vim.api.nvim_set_hl(0, 'Normal', { bg = 'none' })
-vim.api.nvim_set_hl(0, 'NormalFloat', { bg = 'none' })
-vim.api.nvim_set_hl(0, 'FloatBorder', { bg = 'none' })
-
 -- Disable continuation of comments to the next line
 vim.cmd 'au FileType * set fo-=c fo-=r fo-=o'
 
