@@ -122,3 +122,7 @@ vim.keymap.set('n', '<leader>hD', function() gitsigns.diffthis('~') end)
 vim.keymap.set('n', '<leader>td', gitsigns.toggle_deleted)
 -- Text object
 vim.keymap.set({ 'o', 'x' }, 'ih', ':<C-U>Gitsigns select_hunk<CR>')
+
+-- mini.pick key binds
+keymap('n','<leader>f', ':Pick files<CR>', { noremap = true })
+keymap('n','<leader>b', ':Pick buffers<CR>', { noremap = true })

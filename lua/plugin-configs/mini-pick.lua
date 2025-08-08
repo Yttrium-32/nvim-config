@@ -14,5 +14,9 @@ end
 require("mini.pick").setup({
     window = {
         config = win_config
+    },
+    mappings = {
+        move_down = '<A-j>',
+        move_up = '<A-k>',
     }
 })
