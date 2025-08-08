@@ -24,6 +24,9 @@ keymap('n', 'N', function ()
     if vim.v.searchforward == 1 then return 'N' else return 'n' end
 end, { expr = true, noremap = true })
 
+-- Work around for <CR> spitting out <SNR>17_AutoPairsReturn
+keymap("i", "<CR>", "<CR><Plug>AutoPairsReturn", { silent = true })
+
 -- Open filetree with F2
 keymap("n", "<F2>", ':Neotree toggle right reveal<CR>', { silent = true })
 

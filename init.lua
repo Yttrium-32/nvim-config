@@ -70,6 +70,9 @@ vim.opt.spell = true
 
 vim.opt.winborder = 'single'
 
+-- Work around for <CR> spitting out <SNR>17_AutoPairsReturn
+vim.g.AutoPairsMapCR = 0
+
 -- Custom format command
 vim.api.nvim_create_user_command('Format', function()
     vim.lsp.buf.format()
