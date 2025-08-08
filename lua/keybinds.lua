@@ -16,6 +16,14 @@ keymap('n', '<A-j>', ':m .+1<CR>==', { silent = true })
 keymap('n', '<Leader>o', 'o<Esc>k', {})
 keymap('n', '<Leader>O', 'O<Esc>j', {})
 
+-- Prevent n and N from inverting when searching with # or ?
+keymap('n', 'n', function ()
+    if vim.v.searchforward == 1 then return 'n' else return 'N' end
+end, { expr = true, noremap = true })
+keymap('n', 'N', function ()
+    if vim.v.searchforward == 1 then return 'N' else return 'n' end
+end, { expr = true, noremap = true })
+
 -- Open filetree with F2
 keymap("n", "<F2>", ':Neotree toggle right reveal<CR>', { silent = true })
 
