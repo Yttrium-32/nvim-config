@@ -22,6 +22,7 @@ require('plugin-configs.lualine')
 require('plugin-configs.trouble')
 require('plugin-configs.fidget')
 require('plugin-configs.gitsigns')
+require('plugin-configs.mini-pick')
 
 -- Custom format command
 vim.api.nvim_create_user_command('Format', function()

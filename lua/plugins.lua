@@ -129,6 +129,9 @@ require('lazy').setup {
             version = '^6',
             lazy = false
         },
+
+        -- Simple universal picker
+        { 'echasnovski/mini.pick',  version = '*' },
     },
     -- Configure any other settings here. See the documentation for more details.
     -- color scheme that will be used when installing plugins.
