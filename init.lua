@@ -24,10 +24,6 @@ require('plugin-configs.fidget')
 require('plugin-configs.gitsigns')
 require('plugin-configs.mini-pick')
 
--- Custom format command
-vim.api.nvim_create_user_command('Format', function()
-    vim.lsp.buf.format()
-end, { desc = 'Run formater if one exists' })
 
 ----> Random other configuration <----
 -- set maximum amount of columns for syntax highlighting
@@ -72,6 +68,15 @@ vim.opt.updatetime = 50
 -- Enable spell check
 vim.opt.spell = true
 
+_Border = 'single'
+
+-- Custom format command
+vim.api.nvim_create_user_command('Format', function()
+    vim.lsp.buf.format()
+end, { desc = 'Run formater if one exists' })
+
+
+----> Highlight groups <----
 -- Link Spell highlights to diagnostics
 vim.api.nvim_set_hl(0, "SpellBad", { link = "DiagnosticUnderlineInfo" })
 vim.api.nvim_set_hl(0, "SpellCap", { link = "DiagnosticUnderlineHint" })
@@ -80,6 +85,12 @@ vim.api.nvim_set_hl(0, "SpellCap", { link = "DiagnosticUnderlineHint" })
 vim.api.nvim_set_hl(0, "SpellRare", { link = "Normal" })
 vim.api.nvim_set_hl(0, "SpellLocal", { link = "Normal" })
 
+-- Always highlight #if section in C and Cpp
+vim.api.nvim_set_hl(0, "@lsp.type.comment.c", { link = "Normal" })
+vim.api.nvim_set_hl(0, "@lsp.type.comment.cpp", { link = "Normal" })
+
+
+----> Auto commands <----
 -- Disable continuation of comments to the next line
 vim.cmd 'au FileType * set fo-=c fo-=r fo-=o'
 
@@ -93,8 +104,3 @@ vim.cmd 'au VimEnter,BufWinEnter * if &filetype == "neo-tree" | setlocal winbar=
 local kernel_au = 'au BufNewFile,BufRead ' .. os.getenv('HOME') .. '/dev/linux_work/ set cc=81 noet ts=8'
 vim.cmd(kernel_au)
 
--- Always highlight #if section in C and Cpp
-vim.api.nvim_set_hl(0, "@lsp.type.comment.c", { link = "Normal" })
-vim.api.nvim_set_hl(0, "@lsp.type.comment.cpp", { link = "Normal" })
-
-_Border = 'single'
