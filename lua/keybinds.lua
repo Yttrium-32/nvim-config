@@ -45,8 +45,7 @@ autocmd('LspAttach', {
         local opts = { buffer = e.buf }
         keymap("n", "gd", function() vim.lsp.buf.definition() end, opts)
         keymap("n", "gi", function() vim.lsp.buf.implementation() end, opts)
-        keymap("n", "K", function()
-        end, opts)
+        keymap("n", "K", function() vim.lsp.buf.hover() end, opts)
         keymap("n", "<leader>vws", function() vim.lsp.buf.workspace_symbol() end, opts)
         keymap("n", "<leader>vd", function() vim.diagnostic.open_float() end, opts)
         keymap("n", "<leader>vca", function() vim.lsp.buf.code_action() end, opts)
