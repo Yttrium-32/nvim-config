@@ -45,8 +45,13 @@ require('lazy').setup {
         -- Plugin for LSP configuration
         {
             'neovim/nvim-lspconfig',
-            dependencies = {
-                { 'williamboman/mason-lspconfig.nvim' },
+        },
+
+        {
+            "williamboman/mason-lspconfig.nvim",
+            event = "VeryLazy",
+            opts = {
+                ensure_installed = { "lua_ls", "pyright", "clangd" },
             }
         },
 

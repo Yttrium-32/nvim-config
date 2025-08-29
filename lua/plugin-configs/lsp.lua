@@ -50,13 +50,6 @@ vim.lsp.config('pyright', {
 
 })
 
-require('mason-lspconfig').setup({
-    ensure_installed = {
-        'lua_ls',
-        'pyright',
-        'clangd'
-    },
-})
 
 require("blink.cmp").setup({
     -- 'default' (recommended) for mappings similar to built-in completions (C-y to accept)
@@ -100,3 +93,4 @@ require("blink.cmp").setup({
     -- See the fuzzy documentation for more information
     fuzzy = { implementation = "prefer_rust_with_warning" }
 })
+
