@@ -139,6 +139,7 @@ require('lazy').setup {
         -- Simple universal picker
         { 'echasnovski/mini.pick',  version = '*' },
     },
+    rocks = { enabled = false },
     -- Configure any other settings here. See the documentation for more details.
     -- color scheme that will be used when installing plugins.
     install = { colorscheme = { 'onedark' } },
