@@ -6,13 +6,4 @@ require("neo-tree").setup({
     window = {
         position = "current"
     },
-    sources = { 'filesystem', 'buffers' },
-    source_selector = {
-        winbar = true,
-        content_layout = "center",
-        sources = {
-            { source = 'filesystem' },
-            { source = 'buffers' },
-        },
-    },
 })
