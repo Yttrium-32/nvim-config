@@ -78,9 +78,6 @@ vim.api.nvim_create_user_command('Format', function()
     vim.lsp.buf.format()
 end, { desc = 'Run formater if one exists' })
 
--- Remove space for commands
-vim.opt.cmdheight = 0
-
 
 ----> Highlight groups <----
 -- Link Spell highlights to diagnostics
