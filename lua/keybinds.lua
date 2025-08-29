@@ -17,10 +17,10 @@ keymap('n', '<Leader>o', 'o<Esc>k', {})
 keymap('n', '<Leader>O', 'O<Esc>j', {})
 
 -- Prevent n and N from inverting when searching with # or ?
-keymap('n', 'n', function ()
+keymap('n', 'n', function()
     if vim.v.searchforward == 1 then return 'n' else return 'N' end
 end, { expr = true, noremap = true })
-keymap('n', 'N', function ()
+keymap('n', 'N', function()
     if vim.v.searchforward == 1 then return 'N' else return 'n' end
 end, { expr = true, noremap = true })
 
@@ -118,5 +118,5 @@ vim.keymap.set('n', '<leader>td', gitsigns.toggle_deleted)
 vim.keymap.set({ 'o', 'x' }, 'ih', ':<C-U>Gitsigns select_hunk<CR>')
 
 -- mini.pick key binds
-keymap('n','<leader>f', ':Pick files<CR>', { noremap = true })
-keymap('n','<leader>b', ':Pick buffers<CR>', { noremap = true })
+keymap('n', '<leader>f', ':Pick files<CR>', { noremap = true })
+keymap('n', '<leader>b', ':Pick buffers<CR>', { noremap = true })
