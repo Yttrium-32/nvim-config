@@ -93,11 +93,7 @@ vim.api.nvim_set_hl(0, "@lsp.type.comment.c", { link = "Normal" })
 vim.api.nvim_set_hl(0, "@lsp.type.comment.cpp", { link = "Normal" })
 
 -- Make most backgrounds transparent
-local transparent_groups = {
-    'Normal', 'NormalNC'
-}
-
-for _, group in ipairs(transparent_groups) do
+for _, group in ipairs({ 'Normal', 'NormalNC' }) do
     vim.api.nvim_set_hl(0, group, { bg = 'none', ctermbg = 'none' })
 end
 
