@@ -1,5 +1,7 @@
--- Setup trouble.nvim
-require('trouble').setup {
+-- Prettier diagnostics
+return {
+    'folke/trouble.nvim',
+    cmd = 'Trouble',
     opts = {
         icons = true,
         height = 5,

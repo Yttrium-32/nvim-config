@@ -24,12 +24,6 @@ keymap('n', 'N', function()
     if vim.v.searchforward == 1 then return 'N' else return 'n' end
 end, { expr = true, noremap = true })
 
--- Work around for <CR> spitting out <SNR>17_AutoPairsReturn
-keymap("i", "<CR>", "<CR><Plug>AutoPairsReturn", { silent = true })
-
--- Open filetree with F2
-keymap("n", "<F2>", ':Neotree toggle right reveal<CR>', { silent = true })
-
 -- Navigation of bufferline
 keymap('n', '<S-w>l', ':BufferLineCycleNext<CR>', { noremap = true })
 keymap('n', '<S-w>h', ':BufferLineCyclePrev<CR>', { noremap = true })
@@ -72,50 +66,3 @@ vim.keymap.set("n", "<leader>cs", ":Trouble symbols toggle focus=false<CR>")
 vim.keymap.set("n", "<leader>cl", ":Trouble lsp toggle focus=false win.position=right<CR>")
 vim.keymap.set("n", "<leader>xl", ":Trouble loclist toggle<cr>")
 vim.keymap.set("n", "<leader>xq", ":Trouble qflist toggle<CR>")
-
--- Suggested key binds for gitsigns
-local gitsigns = require('gitsigns')
--- Navigation
-local nxt_hck_key = ']h'
-local prv_hck_key = '[h'
-vim.keymap.set('n', nxt_hck_key, function()
-    if vim.wo.diff then
-        vim.cmd.normal({ nxt_hck_key, bang = true })
-    else
-        gitsigns.nav_hunk('next')
-    end
-end)
-
-vim.keymap.set('n', prv_hck_key, function()
-    if vim.wo.diff then
-        vim.cmd.normal({ prv_hck_key, bang = true })
-    else
-        gitsigns.nav_hunk('prev')
-    end
-end)
--- Actions
-vim.keymap.set('n', '<leader>hs', gitsigns.stage_hunk)
-vim.keymap.set('n', '<leader>hr', gitsigns.reset_hunk)
-vim.keymap.set('v', '<leader>hs', function()
-    gitsigns.stage_hunk { vim.fn.line('.'), vim.fn.line('v') }
-end)
-vim.keymap.set('v', '<leader>hr', function()
-    gitsigns.reset_hunk { vim.fn.line('.'), vim.fn.line('v') }
-end)
-vim.keymap.set('n', '<leader>hS', gitsigns.stage_buffer)
-vim.keymap.set('n', '<leader>hu', gitsigns.undo_stage_hunk)
-vim.keymap.set('n', '<leader>hR', gitsigns.reset_buffer)
-vim.keymap.set('n', '<leader>hp', gitsigns.preview_hunk)
-vim.keymap.set('n', '<leader>hb', function()
-    gitsigns.blame_line { full = true }
-end)
-vim.keymap.set('n', '<leader>tb', gitsigns.toggle_current_line_blame)
-vim.keymap.set('n', '<leader>hd', gitsigns.diffthis)
-vim.keymap.set('n', '<leader>hD', function() gitsigns.diffthis('~') end)
-vim.keymap.set('n', '<leader>td', gitsigns.toggle_deleted)
--- Text object
-vim.keymap.set({ 'o', 'x' }, 'ih', ':<C-U>Gitsigns select_hunk<CR>')
-
--- mini.pick key binds
-keymap('n', '<leader>f', ':Pick files<CR>', { noremap = true })
-keymap('n', '<leader>b', ':Pick buffers<CR>', { noremap = true })
